@@ -1,0 +1,154 @@
+h2{
+    font-size: 45px;
+}
+
+/*Section 1*/
+.section1Container {
+    width: 100%;
+    background-color: #1C305C;
+}
+
+.section1 {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    align-items: center;
+    height: 880px;
+    margin: 0 auto;
+}
+
+.section1 img {
+    width: 50%;
+    max-width: 750px;
+    height: auto;
+    margin-top: 50px;
+}
+
+.rightContent {
+    align-self: center;  
+}
+
+.section1 h2 {      
+    color: white;
+    min-width: 600px;
+    margin-bottom: 65px;
+}
+
+.rightContent button {   
+    color: white;
+}
+
+.rightContent button:hover {
+    color: #1C305C;
+}
+
+/*Section 2*/
+.section2Container {
+    width: 100%;
+    background-color: white;
+}
+
+.section2 {
+    width: 80%;
+    height: 880px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.section2 h2 {    
+    color: #1C305C;    
+    padding-top: 100px;
+    padding-bottom: 80px;
+}
+
+.alltimefav{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-top: 30px;
+}
+
+/*Section 3*/
+.section3Container {
+    width: 100%;  
+    background-image: url("/IMG/Webpage_Images/hp2.png");        
+}
+
+.section3 {    
+    display: flex;
+    justify-content: flex-end;      
+    height: 880px;
+    margin: 0 auto;
+}
+
+.section3 h2 {    
+    padding-bottom: 80px;    
+    color: #1C305C;
+    width: 600px;
+}
+
+.section3Content {
+    background-color: white;  
+    opacity: 0.9;  
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center; 
+    align-self: flex-end;
+    margin-bottom: 20px;
+    margin-right: 100px;
+}
+
+.section3Content button {   
+    color: #1C305C;
+}
+
+.section3Content button:hover {
+    color: white;
+}
+
+/*Section 4*/
+.section4Container {
+    width: 100%;
+    background-color: white;
+}
+
+.section4 {
+    width: 80%;
+    height: 880px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;  
+    justify-content: space-between;  
+}
+
+.section4 img {
+    width: 45%;
+    max-width: 750px;
+    height: 80%;
+    margin-top: 80px;
+}
+
+.rightContent{
+    width: 650px;
+}
+
+.section4 h2,
+p {
+    padding: 0;
+    margin: 0;
+    text-align: justify;
+}
+
+.section4 h2 {
+    padding-top: 5px;
+    padding-bottom: 15px;
+    color: #1C305C;
+}
+
+.section4 .title {
+    font-size: 28px;
+    font-weight: 500;
+    color: black;
+}
