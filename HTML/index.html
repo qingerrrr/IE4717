@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Sign In</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Luckiest Guy' rel='stylesheet'>
+    <link rel="stylesheet" href="/CSS/global.css">
+    <link rel="stylesheet" href="/CSS/index.css">
+</head>
+
+<body>
+    <div class="flex-container">
+        <div class="bookLeft">
+            <h1>DUNOT</h1>
+            <p>Where Imaginations Come to Life</p>
+        </div>
+
+        <div class="bookRight">
+            <div class="rightContent">
+                <h2>Welcome Back</h2>
+
+                <form action="" method="" id="signinForm">
+                    <div class="radio-button-group">
+                        <input type="radio" id="userRadio" name="userType" value="User" checked>
+                        <label for="userRadio" id="userLabel" class="radioLabel">User</label>
+                        <input type="radio" id="adminRadio" name="userType" value="Admin">
+                        <label for="adminRadio" id="adminLabel" class="radioLabel">Admin</label>
+                    </div>
+
+                    <label for="userName">Username</label>
+                    <p class="errormsg" >Error message</p>
+                    <input type="text" id="userName" name="userName">
+
+                    <label for="Password">Password</label>
+                    <p class="errormsg">Error message</p>
+                    <input type="password" id="Password" name="Password">
+                </form>
+
+                <button class="button" type="submit" form="signinForm" value="Submit">Sign In</button>
+
+                <p class="registerlogin">No account? <a href="register.html">Register Here!</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
