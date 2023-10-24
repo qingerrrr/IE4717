@@ -1,0 +1,17 @@
+.flex-container{
+    margin: 130px 0 100px;
+}
+
+.rightContent{
+    text-align: left;
+    position: relative;
+}
+
+.rightContent h2{
+    margin-bottom: 30px;
+}
+
+.indexBtn{
+    position:absolute;
+    bottom: 0px;
+}
