@@ -1,0 +1,105 @@
+.container {
+    padding-top: 60px;
+    width: 100%;
+}
+
+.contentContainer {
+    width: 80%;
+    margin: 0 auto;
+}
+
+/*Book Description*/
+.descriptionContainer {
+    height: 85vh;
+    display: flex;
+    justify-content: space-between; 
+}
+
+.imgBox{    
+    width: 100%;
+    height: 85vh;    
+}
+
+.descriptionContainer .descImg {      
+    height: 85vh;
+    max-width: 100%; /* To make sure the image scales proportionally */
+    max-height: 100%; /* To make sure the image scales proportionally */
+}
+
+.bookDetails {
+    flex: 0 0 800px;
+    margin-top: 30px;
+    position: relative;
+}
+
+.bookDetails h1,
+h2 {
+    margin-bottom: 10px;
+}
+
+.bookDetails p {
+    margin-bottom: 30px;
+    width: 800px;
+    text-align: justify;
+}
+
+.quantityForm {
+    position: absolute;
+    bottom: 0px;
+}
+
+.quantityForm label {
+    font-size: 25px;
+    padding-right: 20px;
+}
+
+.quantityForm input[type="number"] {
+    font-size: 20px;
+    width: 100px;
+    padding-left: 10px;
+    text-align: center;
+}
+
+.descBtn {
+    width: 800px;
+    margin-top: 40px;
+    font-size: 25px;
+}
+
+.descBtn:hover {
+    box-shadow: inset 800px 0 0 0 #FFCF00;
+    color: white;
+}
+
+/*Suggestion*/
+.suggestionContainer {
+    margin-top: 150px;
+    text-align: center;
+}
+
+.suggestionContainer h2 {
+    font-size: 32px;
+    color: #1C305C;
+}
+
+.recoBooksContainer {
+    margin: 100px 0 100px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.items a {
+    text-decoration: none;
+    color: #000;
+}
+
+.items h3 {
+    padding-top: 25px;
+    padding-bottom: 5px;
+    font-size: 20px;
+}
+
+.items h4 {
+    font-size: 16px;
+}
