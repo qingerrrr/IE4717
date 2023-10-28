@@ -73,7 +73,7 @@ h2{
 /*Section 3*/
 .section3Container {
     width: 100%;  
-    background-image: url("/IMG/Webpage_Images/hp2.png");        
+    background-image: url("../IMG/Webpage_Images/hp2.png");        
 }
 
 .section3 {    

@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Luckiest Guy' rel='stylesheet'>
-    <link rel="stylesheet" href="/CSS/font-awesome-4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/CSS/global.css">
-    <link rel="stylesheet" href="/CSS/description.css">
+    <link rel="stylesheet" href="../CSS/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../CSS/global.css">
+    <link rel="stylesheet" href="../CSS/description.css">
 </head>
 
 <body>
@@ -31,7 +31,7 @@
         <div class="container">
             <div class="contentContainer">
                 <div class="descriptionContainer">
-                    <div class="imgBox"><img src="/IMG/Books/Book5.jpg" class="descImg"></div>
+                    <div class="imgBox"><img src="../IMG/Books/Book5.jpg" class="descImg"></div>
 
                     <div class="bookDetails">
                         <h1>Book Name 1</h1>
@@ -60,26 +60,26 @@
 
                     <div class="recoBooksContainer">
                         <div class="items" id="book1">
-                            <a href="catalogue.html"><img src="/IMG/Books/pj_som.jpg" class="bookImg">
+                            <a href="catalogue.html"><img src="../IMG/Books/pj_som.jpg" class="bookImg">
                                 <h3>Book Title 1</h3>
                                 <h4>$50.00</h4>
                             </a>
                         </div>
 
                         <div class="items" id="book2">
-                            <a href="catalogue.html"><img src="/IMG/Books/hp_cos.jpg" class="bookImg"></a>
+                            <a href="catalogue.html"><img src="../IMG/Books/hp_cos.jpg" class="bookImg"></a>
                             <h3>Book Title 1</h3>
                             <h4>$50.00</h4>
                         </div>
 
                         <div class="items" id="book3">
-                            <a href="catalogue.html"><img src="/IMG/Books/Book8.jpg" class="bookImg"></a>
+                            <a href="catalogue.html"><img src="../IMG/Books/Book8.jpg" class="bookImg"></a>
                             <h3>Book Title 1</h3>
                             <h4>$50.00</h4>
                         </div>
 
                         <div class="items" id="book1">
-                            <a href="catalogue.html"><img src="/IMG/Books/hp_cos.jpg" class="bookImg"></a>
+                            <a href="catalogue.html"><img src="../IMG/Books/hp_cos.jpg" class="bookImg"></a>
                             <h3>Book Title 1</h3>
                             <h4>$50.00</h4>
                         </div>
@@ -99,54 +99,8 @@
         </footer>
     </div>
 
-    <script>
-        window.addEventListener("load", (event) => {
-            const rangeInput = document.querySelectorAll(".range-input input");
-            const priceInput = document.querySelectorAll(".price-input input");
-            const progress = document.querySelector(".slider .progress");
-
-            let priceGap = 10;
-
-            rangeInput.forEach(input => {
-                input.addEventListener("input", e => {
-                    let minVal = parseInt(rangeInput[0].value);
-                    let maxVal = parseInt(rangeInput[1].value);
-
-                    if (maxVal - minVal < priceGap) {
-                        if (e.target.className === "range-min") {
-                            rangeInput[0].value = maxVal - priceGap;
-                        } else {
-                            rangeInput[1].value = minVal + priceGap;
-                        }
-
-                    } else {
-                        priceInput[0].value = minVal;
-                        priceInput[1].value = maxVal;
-
-                        progress.style.left = (minVal / rangeInput[0].max) * 100 + "%";
-                        progress.style.right = 100 - (maxVal / rangeInput[1].max) * 100 + "%";
-                    }
-                })
-            })
-
-            priceInput.forEach(input => {
-                input.addEventListener("input", e => {
-                    let minVal = parseInt(priceInput[0].value);
-                    let maxVal = parseInt(priceInput[1].value);
-
-                    if ((maxVal - minVal >= priceGap) && (maxVal <= 120)) {
-                        if (e.target.className === "input-min") {
-                            rangeInput[0].value = minVal;
-                            progress.style.left = (minVal / rangeInput[0].max) * 100 + "%";
-
-                        } else {
-                            rangeInput[1].value = maxVal;
-                            progress.style.right = 100 - (maxVal / rangeInput[1].max) * 100 + "%";
-                        }
-                    }
-                })
-            })
-        })
+    <script>        
+      
     </script>
 </body>
 

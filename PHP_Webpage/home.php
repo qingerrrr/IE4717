@@ -1,3 +1,22 @@
+<?php
+//Ensure user is logged in
+session_start();
+
+if (!isset($_SESSION["name"])) {
+    echo 'Direct access not permitted. Please <a href="index.php">log in</a>.';
+    die();
+}
+
+//Cookie
+if (isset($_COOKIE['cart'])) {
+    // Calculate the number of items in the cart
+    $cartNum = count($_COOKIE['cart']);
+
+} else {
+    $cartNum = 0;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,10 +36,18 @@
         <div class="navigationBarContainer">
             <nav class="navBarContent">
                 <span></span>
-                <h1><a href="home.html">DUNOT</a></h1>
+                <h1><a href="../PHP_Webpage/home.php">DUNOT</a></h1>
                 <span class="icons">
-                    <a href="catalogue.html"><i class="fa fa-book fa-2x" aria-hidden="true"></i></a>
-                    <div class="shoppingBag" data-count="5">
+                    <a href="../PHP_Webpage/catalogue.php"><i class="fa fa-book fa-2x" aria-hidden="true"></i></a>
+
+                    <?php
+                    if ($cartNum > 0) {
+                        echo "<div class='shoppingBag' data-count='" . $cartNum . "'>";                        
+                    }else{
+                        echo "<div class='shoppingBag'>";
+                    }
+                    ?>
+                    <!-- <div class="shoppingBag"> -->
                         <a href="#"><i class="fa fa-shopping-bag fa-2x" aria-hidden="true"></i></a>
                     </div>
                     <a href="#"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
@@ -29,23 +56,23 @@
         </div>
 
         <div class="section1Container">
-            <div class="section1">                
-                <img src="/IMG/Webpage_Images/img2.png">
+            <div class="section1">
+                <img src="../IMG/Webpage_Images/img2.png">
                 <div class="rightContent">
                     <h2>Set Your Imagination Free <br>with Our Captivating Books</h2>
-                    <button class="button" onclick="">Let's Go</button>
+                    <button class="button" onclick="toCatalogue()">Let's Go</button>
                 </div>
             </div>
         </div>
 
-       <div class="section2Container">
+        <div class="section2Container">
             <div class="section2">
                 <h2>All Time Favourite</h2>
                 <div class="alltimefav">
-                    <a href="catalogue.html"><img src="/IMG/Books/hp_cos.jpg" class="bookImg"></a>
-                    <a href="catalogue.html"><img src="/IMG/Books/pj_som.jpg" class="bookImg"></a>
-                    <a href="catalogue.html"><img src="/IMG/Books/Book1.jpg" class="bookImg"></a>
-                    <a href="catalogue.html"><img src="/IMG/Books/Book4.jpg" class="bookImg"></a>
+                    <a href="description.php?bookId=1"><img src="../IMG/Books/hp_cos.jpg" class="bookImg"></a>
+                    <a href="description.php?bookId=1"><img src="../IMG/Books/pj_som.jpg" class="bookImg"></a>
+                    <a href="description.php?bookId=1"><img src="../IMG/Books/Book1.jpg" class="bookImg"></a>
+                    <a href="description.php?bookId=1"><img src="../IMG/Books/Book4.jpg" class="bookImg"></a>
                 </div>
             </div>
         </div>
@@ -54,8 +81,8 @@
             <div class="section3">
                 <div class="section3Content">
                     <h2>Discover An Enchanting <br> World Of Wizardry</h2>
-                    <button class="button" onclick="">Together With Harry Potter</button>
-                </div>              
+                    <button class="button" onclick="toHarryPotter()">Together With Harry Potter</button>
+                </div>
             </div>
         </div>
 
@@ -70,13 +97,13 @@
                         reading journey, we invite you to explore our shelves, discover new worlds, and let your
                         imagination soar. Join us in celebrating the magic of books and the joy of reading.</p>
                 </div>
-                <img src="/IMG/Webpage_Images/img3.png">
+                <img src="../IMG/Webpage_Images/img3.png">
             </div>
         </div>
 
         <div class="section5Container">
             <div class="section4">
-                <img src="/IMG/Webpage_Images/img1.png">
+                <img src="../IMG/Webpage_Images/img1.png">
                 <div class="rightContent">
                     <h2 class="title">OUR MISSION</h2>
                     <h2>Destination For All Literary</h2>
@@ -91,7 +118,7 @@
             </div>
         </div>
 
-       <footer>
+        <footer>
             <div>
                 <h1>
                     DUNOT BOOKSTORE
@@ -102,6 +129,15 @@
     </div>
 
     <script>
+        function toCatalogue() {
+            const url = '../PHP_Webpage/catalogue.php';
+            window.location.href = url;
+        }
+
+        function toHarryPotter() {
+            const url = '../PHP_Webpage/description.php?bookId=5';
+            window.location.href = url;
+        }
     </script>
 </body>
 

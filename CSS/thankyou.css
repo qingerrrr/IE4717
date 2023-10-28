@@ -3,15 +3,18 @@
 }
 
 .rightContent{
-    text-align: left;
-    position: relative;
+    text-align: left;    
 }
 
 .rightContent h2{
     margin-bottom: 30px;
 }
 
+.bookRight{
+    position: relative;
+}
+
 .indexBtn{
     position:absolute;
-    bottom: 0px;
+    bottom: 100px;
 }

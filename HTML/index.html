@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Luckiest Guy' rel='stylesheet'>
-    <link rel="stylesheet" href="/CSS/global.css">
-    <link rel="stylesheet" href="/CSS/index.css">
+    <link rel="stylesheet" href="../CSS/global.css">
+    <link rel="stylesheet" href="../CSS/index.css">
 </head>
 
 <body>
@@ -22,7 +22,8 @@
             <div class="rightContent">
                 <h2>Welcome Back</h2>
 
-                <form action="" method="" id="signinForm">
+                <form action="../PHP_Function/validateSignIn.php" method="POST" id="signinForm"
+                    onsubmit="return checkAll()">
                     <div class="radio-button-group">
                         <input type="radio" id="userRadio" name="userType" value="User" checked>
                         <label for="userRadio" id="userLabel" class="radioLabel">User</label>
@@ -30,21 +31,72 @@
                         <label for="adminRadio" id="adminLabel" class="radioLabel">Admin</label>
                     </div>
 
+                    <p class="errormsg" id="errorOverall">Invalid Username or Password</p>
+
                     <label for="userName">Username</label>
-                    <p class="errormsg" >Error message</p>
-                    <input type="text" id="userName" name="userName">
+                    <input type="text" id="userName" name="userName" required>
+                    <p class="errormsg" id="errorUser">Only letters (a-z, A-Z), numbers, underscores
+                        and full stops are allowed</p>
 
                     <label for="Password">Password</label>
-                    <p class="errormsg">Error message</p>
-                    <input type="password" id="Password" name="Password">
+                    <input type="password" id="Password" name="Password" required>
+                    <p class="errormsg errorPw">Error Message</p>
                 </form>
 
-                <button class="button" type="submit" form="signinForm" value="Submit">Sign In</button>
-
-                <p class="registerlogin">No account? <a href="register.html">Register Here!</a></p>
+                <div class="stickToBtm">
+                    <button id="signinFormBtn" class="button" type="submit" form="signinForm" value="Submit">Sign
+                        In</button>
+                    <p class="registerlogin">No account? <a href="register.html">Register Here!</a></p>
+                </div>
             </div>
         </div>
     </div>
+
+    <script>
+        var nameNode = document.getElementById('userName');
+        nameNode.addEventListener("change", checkName, false);
+        nameNode.addEventListener("keyup", checkName, false);
+
+        var errorUser = document.getElementById("errorUser");
+
+        function checkName(event) {
+            if (event == null) {
+                var nameNode = document.getElementById('userName');
+                var name = nameNode.value;
+                console.log("from no event: " + name);
+            } else {
+                var nameNode = event.currentTarget;
+                var name = event.currentTarget.value;
+                console.log(name);
+            }
+
+            var regexp = /^[A-Za-z\.\_0-9]*$/;
+            var pos = regexp.test(name);
+
+            if (!pos) {
+                errorUser.style.visibility = "visible";
+                nameNode.focus();
+                nameNode.select();
+                return false;
+
+            } else {
+                errorUser.style.visibility = "hidden";
+                return true;
+            }
+        }
+
+        function checkAll() {
+            if (checkName()) {
+                errorUser.style.visibility = "hidden";
+                return true;
+
+            } else {
+                errorUser.style.visibility = "visible";
+                return false;
+            }
+        }
+
+    </script>
 </body>
 
 </html>

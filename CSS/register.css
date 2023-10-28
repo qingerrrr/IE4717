@@ -1,5 +1,6 @@
 body {
-    background: #d5e3f0;
+    /* background: #d5e3f0; */
+    background-image: linear-gradient(to right, #d5e3f0, #AEE1F9);
 }
 
 .flex-container {
@@ -38,13 +39,13 @@ body {
     margin-top: 20px;
 }
 
-
 .bookRight {
     text-align: center;
     width: 676px;
     height: 800px;
     background: white;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    position: relative;
 }
 
 .rightContent {
@@ -69,7 +70,7 @@ input {
 }
 
 #registerForm {
-    margin-top: 50px;
+    margin-top: 35px;
 }
 
 label {
@@ -78,6 +79,7 @@ label {
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    margin-bottom: 5px;
 }
 
 input[type="text"],
@@ -87,7 +89,7 @@ input[type="password"] {
     padding: 10px 20px;
     box-sizing: border-box;
     border: 2px solid #ccc;
-    margin-bottom: 25px;
+    margin-bottom: 10px;
     -webkit-transition: 0.5s;
     transition: 0.5s;
     outline: none;
@@ -102,9 +104,14 @@ input[type="password"]:focus {
     margin-top: 20px;
 }
 
+.stickToBtm{
+    position: absolute;
+    bottom: 20px;
+}
+
 .registerlogin {
     text-align: left;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .registerlogin a {
@@ -116,4 +123,46 @@ input[type="password"]:focus {
     padding-top: 0;
     text-align: left;
     color: red;
+    font-size: 15px;
+    padding-bottom: 20px;
+}
+
+#errorUser{
+    visibility: hidden; 
+}
+
+#errorPw{    
+    visibility: hidden;
+    /* margin-bottom: 20px; */
+}
+
+#errorConfirmPW{    
+    visibility: hidden;
+}
+
+.error-border {
+    border: 2px solid red !important; 
+}
+
+#registerFormBtn[disabled] {
+    border-color: #ccc;
+    color: #ccc;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/*Show password*/
+.showPw {
+    display: flex;
+    align-items: center;
+}
+
+.showPwLabel {
+    font-size: 18px;
+    margin-left: 10px;
+    margin-bottom: 0;
+}
+
+.showPwCheckBox {
+    transform: scale(1.1);
 }

@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Luckiest Guy' rel='stylesheet'>
-    <link rel="stylesheet" href="/CSS/global.css">
-    <link rel="stylesheet" href="/CSS/register.css">
+    <link rel="stylesheet" href="../CSS/global.css">
+    <link rel="stylesheet" href="../CSS/register.css">
 </head>
 
 <body>
@@ -22,23 +22,24 @@
             <div class="rightContent">
                 <h2>User Registration</h2>
 
-                <form action="" method="" id="registerForm">       
-                    <label for="userName">Username</label>
-                    <p class="errormsg" >Error message</p>
+                <form action="" method="" id="registerForm">
+                    <label for="userName">Username</label>                    
                     <input type="text" id="userName" name="userName">
+                    <p class="errormsg" id="errorUser">xxx</p>
 
-                    <label for="Password">Password</label>
-                    <p class="errormsg" >Error message</p>
+                    <label for="Password">Password</label>                   
                     <input type="password" id="Password" name="Password">
+                    <p class="errormsg" id="errorPw">xxx</p>
 
-                    <label for="confirmPassword">Confirm Password</label>
-                    <p class="errormsg" >Error message</p>
+                    <label for="confirmPassword">Confirm Password</label>                    
                     <input type="password" id="confirmPassword" name="confirmPassword">
+                    <p class="errormsg" id="errorPw2">xxx</p>
                 </form>
 
-                <button class="button" type="submit" form="signinForm" value="Submit">Sign In</button>
-
-                <p class="registerlogin">Have an account? <a href="index.html">Log In Here!</a></p>
+                <div class="stickToBtm">
+                    <button class="button" type="submit" form="signinForm" value="Submit">Sign In</button>
+                    <p class="registerlogin">Have an account? <a href="index.html">Log In Here!</a></p>
+                </div>
             </div>
         </div>
     </div>
