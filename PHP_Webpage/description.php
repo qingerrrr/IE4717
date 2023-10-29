@@ -1,6 +1,4 @@
 <?php
-
-
 //Ensure user is logged in
 session_start();
 
@@ -13,7 +11,7 @@ if (!isset($_SESSION["name"])) {
 if (isset($_COOKIE['cart'])) {
     // Calculate the number of items in the cart
     $cartNum = count($_COOKIE['cart']);
-
+    //var_dump($_COOKIE['cart']);
 } else {
     $cartNum = 0;
 }
@@ -70,7 +68,7 @@ $sql->execute(); // Execute the prepared statement
                     <!-- <div class="shoppingBag"> -->
                     <a href="#"><i class="fa fa-shopping-bag fa-2x" aria-hidden="true"></i></a>
         </div>
-        <a href="#"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
+        <a href="../PHP_Webpage/logout.php"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
         </span>
         </nav>
     </div>
@@ -90,12 +88,12 @@ $sql->execute(); // Execute the prepared statement
 
                         <div class="bookDetails">
                             <?php
-                            echo "<input name='bookName' type='hidden'><h1>{$row['bookName']}</h1>";
+                            echo "<input name='bookName' type='hidden' data-value='0' id='bookName'><h1>{$row['bookName']}</h1>";
                             echo "<input name='price' type='hidden'><h2>$" . number_format($row['price'], 2) . "</h2>";
                             echo "<input name='stock' type='hidden'><p>{$row['stock']} In Stock</p>";
                             echo "<input name='info' type='hidden'><p>{$row['info']}</p>";
 
-                            echo "<form class='quantityForm' method='POST' action='add_to_cart.php?bookId=" . $bookId .
+                            echo "<form class='quantityForm' onclick='checkItem()' method='POST' action='add_to_cart.php?bookId=" . $bookId .
                                 "&bookName=" . $row['bookName'] . "&price=" . $row['price'] . "'>";
 
                             ?>
@@ -104,11 +102,12 @@ $sql->execute(); // Execute the prepared statement
                             <label>Quantity:</label>
 
                             <?php
-                            echo "<input type='number' name='qty' value='1' min='1' max='{$row['stock']}' id='qtyInput' required><br>";
+                            echo "<input type='number' name='qty' value='1' min='1' max='{$row['stock']}' id='qtyInput'
+                            onkeypress='return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))'required><br>";
                             ?>
 
-                            <span id="errorSpan" style="color: red;"></span>
-                            <input type="submit" class="button descBtn" value="Add To Cart" name="addToCart">
+                            <p id="errorSpan">Error Message Placeholder</p>
+                            <input type="submit" class="button descBtn" value="Add To Cart" name="addToCart" id="descBtn">
                             </form>
                         </div>
                     </div>
@@ -158,34 +157,6 @@ $sql->execute(); // Execute the prepared statement
                 $sql->close();
                 $conn->close();
                 ?>
-
-                    <!-- <div class="recoBooksContainer">
-                            <div class="items" id="book1">
-                                <a href="catalogue.html"><img src="../IMG/Books/pj_som.jpg" class="bookImg">
-                                    <h3>Book Title 1</h3>
-                                    <h4>$50.00</h4>
-                                </a>
-                            </div>
-
-                            <div class="items" id="book2">
-                                <a href="catalogue.html"><img src="../IMG/Books/hp_cos.jpg" class="bookImg"></a>
-                                <h3>Book Title 1</h3>
-                                <h4>$50.00</h4>
-                            </div>
-
-                            <div class="items" id="book3">
-                                <a href="catalogue.html"><img src="../IMG/Books/Book8.jpg" class="bookImg"></a>
-                                <h3>Book Title 1</h3>
-                                <h4>$50.00</h4>
-                            </div>
-
-                            <div class="items" id="book1">
-                                <a href="catalogue.html"><img src="../IMG/Books/hp_cos.jpg" class="bookImg"></a>
-                                <h3>Book Title 1</h3>
-                                <h4>$50.00</h4>
-                            </div>
-                        </div> -->
-
                 </div>
             </div>
         </div>
@@ -203,26 +174,99 @@ $sql->execute(); // Execute the prepared statement
     </div>
 
     <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            if(!performValidation()){                
+                const errorSpan = document.getElementById("errorSpan");
+                errorSpan.textContent = 'Item has added to cart.';
+                errorSpan.style.visibility = 'visible';
+
+                // var addtocartBtn = document.getElementById('descBtn');
+                // addtocartBtn.setAttribute("disabled", "true");
+                // const numberInput = document.getElementById("qtyInput");
+                // numberInput.setAttribute("disabled", "true");
+            }
+        });
+
         //Check if qty input is more than stock
         const numberInput = document.getElementById("qtyInput");
         const errorSpan = document.getElementById("errorSpan");
         const maxAttributeValue = numberInput.getAttribute("max");
+        var addtocartBtn = document.getElementById('descBtn');
 
         numberInput.addEventListener("input", function () {
+            if (numberInput.value === null || numberInput.value.trim() === "") {
+                errorSpan.textContent = "Please enter your quantity";
+                errorSpan.style.visibility = 'visible';
+                addtocartBtn.setAttribute("disabled", "true");
 
-            if (numberInput.validity.rangeUnderflow) {
-                numberInput.setCustomValidity("Value must be greater than or equal to 1.");
+            } else if (numberInput.validity.rangeUnderflow) {
+                //numberInput.setCustomValidity("Value must be greater than or equal to 1.");
+                errorSpan.textContent = "Quantity must be greater than or equal to 1";
+                errorSpan.style.visibility = 'visible';
+                addtocartBtn.setAttribute("disabled", "true");
 
             } else if (numberInput.validity.rangeOverflow) {
-                numberInput.setCustomValidity("We only have " + maxAttributeValue + " in stock :(");
+                // numberInput.setCustomValidity("We only have " + maxAttributeValue + " in stock :(");
+                errorSpan.textContent = "There are only " + maxAttributeValue + " left in stock!";
+                errorSpan.style.visibility = 'visible';
+                addtocartBtn.setAttribute("disabled", "true");
 
             } else {
-                numberInput.setCustomValidity("");
-            }
-
-            errorSpan.textContent = numberInput.validationMessage;
+                //errorSpan.textContent = numberInput.validationMessage;
+                errorSpan.style.visibility = 'hidden';
+                addtocartBtn.removeAttribute("disabled");
+            };
 
         });
+
+        //Check if item already in cart
+        // var bookName = document.getElementById('bookName');
+        // var added = bookName.getAttribute('data-value');
+
+        addtocartBtn.addEventListener("click", checkItem);
+
+        function checkItem() {
+            if (performValidation()) {
+                return true;
+            } else {
+                event.preventDefault();
+
+                errorSpan.textContent = "Item has already been added to cart.";
+                errorSpan.style.visibility = 'visible';
+                return false;
+            }
+
+            // if (!performValidation()) {
+            //     console.log("in cart");
+            //     // If validation fails, prevent the form from submitting
+            //     event.preventDefault();
+            //     // errorSpan.textContent = "Item has already added to cart.";
+            //     // errorSpan.style.visibility = 'visible';
+            //     // addtocartBtn.setAttribute("disabled", "true");
+            // } else {
+            //     console.log("not in cart");
+            //     //return true;
+            // }
+        }
+
+        function performValidation() {
+            <?php
+            $bookId = $_GET['bookId'];
+
+            // Check if the cart cookie is set and if it contains the item with the specified bookId
+            if (isset($_COOKIE['cart']) && isset($_COOKIE['cart'][$bookId])) {
+                // The item with the specified bookId is already in the cart
+                echo "console.log('Item with bookId $bookId is in the cart.');";                
+                echo "return false;";
+
+            } else {
+                // The item with the specified bookId is not in the cart
+                echo "console.log('Item with bookId $bookId is not in the cart.');";
+                echo "return true;";
+            }
+            ?>
+        };
+
     </script>
 </body>
 

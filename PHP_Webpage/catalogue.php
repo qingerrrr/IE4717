@@ -11,7 +11,7 @@ if (!isset($_SESSION["name"])){
 if (isset($_COOKIE['cart'])) {
     // Calculate the number of items in the cart
     $cartNum = count($_COOKIE['cart']);
-
+    var_dump($_COOKIE['cart']);
 } else {
     $cartNum = 0;
 }
@@ -80,7 +80,7 @@ $result = $sql->get_result(); // Get the result set from the executed statement
                     <!-- <div class="shoppingBag"> -->
                         <a href="#"><i class="fa fa-shopping-bag fa-2x" aria-hidden="true"></i></a>
                     </div>
-                    <a href="#"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
+                    <a href="../PHP_Webpage/logout.php"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
                 </span>
             </nav>
         </div>

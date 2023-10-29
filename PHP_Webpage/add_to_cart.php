@@ -7,7 +7,7 @@
 //     }
 // }
 
-var_dump($_COOKIE['cart']);
+//var_dump($_COOKIE['cart']);
 
 if (isset($_POST['addToCart'])) {
     // if (isset($_COOKIE['cart'])) {
@@ -51,7 +51,7 @@ if (isset($_POST['addToCart'])) {
     // Set a cookie to store the serialized product data
     setcookie("cart[$bookId]", $serializedProduct, time() + 3600, "/"); //cookie staying for 1 hour
 
-
+    //header("Location: ../PHP_Webpage/add_to_cart.php");
     header("Location: ../PHP_Webpage/description.php?bookId=" . $bookId);
     exit; // Make sure to exit to prevent further script execution
 

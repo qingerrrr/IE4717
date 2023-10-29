@@ -56,7 +56,7 @@ h2 {
 .quantityForm input[type="number"] {
     font-size: 20px;
     width: 100px;
-    /* padding-left: 10px; */
+    padding-left: 10px;
     text-align: center;
 }
 
@@ -98,8 +98,24 @@ h2 {
     padding-top: 25px;
     padding-bottom: 5px;
     font-size: 20px;
+    width: 300px;
 }
 
 .items h4 {
     font-size: 16px;
+}
+
+/*Error Msg*/
+#errorSpan{
+    visibility: hidden;
+    color: red;
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+#descBtn[disabled] {
+    border-color: #ccc;
+    color: #ccc;
+    cursor: not-allowed;
+    pointer-events: none;
 }

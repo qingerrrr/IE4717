@@ -157,7 +157,7 @@ session_start();
 
             } else if (pwNode.value !== confirmPw) {
                 errorConfirmPW.style.visibility = "visible";
-                errorConfirmPW.textContent = "Confirmation password is different from the password";
+                errorConfirmPW.textContent = "Confirmation password mismatch";
                 confirmPwNode.classList.add("error-border");
 
                 //confirmPwNode.focus();
