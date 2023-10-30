@@ -27,7 +27,7 @@ create table books
 
 create table orders
 (  orderId int unsigned not null auto_increment primary key,   
-   userId int unsigned not null,
+   userName varchar(100) not null,
    email varchar(500) not null,
    country varchar(200) not null,
    recipientName varchar(200) not null,
