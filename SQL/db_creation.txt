@@ -31,7 +31,7 @@ create table orders
    email varchar(500) not null,
    country varchar(200) not null,
    recipientName varchar(200) not null,
-   address varchar(500) not null,
+   recipient_address varchar(500) not null,
    postalCode varchar(100) not null,
    totalCost float(6,2) not null
 );
