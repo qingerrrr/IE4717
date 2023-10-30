@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unoguerta</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/responsive.css" />
+  </head>
+  <body>
+    <div class="basket">
+      <div class="container">
+        <table class="table tableAdd">
+          <thead class="table-dark">
+            <tr>
+              <th scope="col">Title</th>
+              <th scope="col">Quantity</th>
+              <th class="text-last" scope="col">Cost</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Book Name 1</td>
+              <td>1</td>
+              <td class="text-last">$<span class="item-total">10.00</span></td>
+            </tr>
+            <tr>
+              <td>Book Name 2</td>
+              <td>1</td>
+              <td class="text-last">$<span class="item-total">10.20</span></td>
+            </tr>
+            <tr>
+              <td>Book Name 3</td>
+              <td>3</td>
+              <td class="text-last">$<span class="item-total">30.00</span></td>
+            </tr>
+            <tr class="text-last border-top">
+              <td colspan="3" class="text_total">
+                Total Cost $<span id="basketTotal"></span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="basket_btn">
+          <a href="./shipping.html" class="btn_submit">Ready to Ship</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="./assets/js/jquery-3.6.0.min.js"></script>
+    <script src="./assets/js/custom.js"></script>
+  </body>
+</html>
