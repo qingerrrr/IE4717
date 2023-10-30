@@ -1,0 +1,25 @@
+insert into users values
+(1, 'qing.3r_', 'f32ee!'),
+(2, 'uno.guerta27', '123ABCabc!');
+  
+
+insert into admins values
+(1, 'admin', 'f32eeAdmin!');
+
+
+insert into categories values 
+(1, 'Fantasy'), 
+(2, 'Novel'), 
+(3, 'Self-Improvement'), 
+(4, 'Learning');
+
+
+insert into books values
+(1, 'It Ends With Us', 'Lily hasn’t always had it easy, but that’s never stopped her from working hard for the life she wants. She’s come a long way from the small town where she grew up—she graduated from college, moved to Boston, and started her own business. And when she feels a spark with a gorgeous neurosurgeon named Ryle Kincaid, everything in Lily’s life seems too good to be true.', '../IMG/Books/Book1.jpg', 2, 20, 30),
+(2, 'Ikigai', 'It\'s the Japanese word for \'a reason to live\' or \'a reason to jump out of bed in the morning\'. It\'s the place where your needs, desires, ambitions, and satisfaction meet. A place of balance. Small wonder that finding your ikigai is closely linked to living longer. Finding your ikigai is easier than you might think. This book will help you work out what your own ikigai really is, and equip you to change your life.', '../IMG/Books/Book2.jpg', 2, 10, 12),
+(3, 'Atomic Habits', 'In this ground-breaking book, Clears reveals exactly how these minuscule changes can grow into such life-altering outcomes. He uncovers a handful of simple life hacks (the forgotten art of Habit Stacking, the unexpected power of the Two Minute Rule, or the trick to entering the Goldilocks Zone), and delves into cutting-edge psychology and neuroscience to explain why they matter. Along the way, he tells inspiring stories of Olympic gold medalists, leading CEOs, and distinguished scientists who have used the science of tiny habits to stay productive, motivated, and happy.', '../IMG/Books/Book3.jpg', 3, 15, 50),
+(4, 'The Highly Sensitive Person', 'Do you have a keen imagination and vivid dreams? Is time alone each day as essential to you as food and water? Are you “too shy” or “too sensitive” according to others? Do noise and confusion quickly overwhelm you? If your answers are yes, you may be a Highly Sensitive Person (HSP).', '../IMG/Books/Book7.jpg', 3, 20, 24),
+(5, 'Harry Potter and The Philospher\'s Stone', 'Harry discovers he\'s a wizard on his 11th birthday and attends Hogwarts School of Witchcraft and Wizardry. Along with his new friends Ron and Hermione, he uncovers the mystery of the Sorcerer\'s Stone while facing the dark wizard, Voldemort.', '../IMG/Books/hp_ps.jpg', 1, 20, 30),
+(6, 'Percy Jackson: The Lightning Thief', 'In the final book, Harry, Ron, and Hermione go on a dangerous quest to find and destroy Voldemort\'s Horcruxes. The wizarding world is at war, and the ultimate battle between good and evil takes place at Hogwarts.', '../IMG/Books/pj_lt.jpg', 1, 10, 24),
+(7, 'HTML & CSS: Design and Build Web Sites', 'Every day, more and more people want to learn some HTML and CSS. Joining the professional web designers and programmers are new audiences who need to know a little bit of code at work (update a content management system or e-commerce store) and those who want to make their personal blogs more attractive. Many books teaching HTML and CSS are dry and only written for those who want to become programmers, which is why this book takes an entirely new approach.', '../IMG/Books/html_book.jpg', 4, 8, 120),
+(8, 'Harry Potter and The Chamber of Secrets',  'In his second year at Hogwarts, Harry faces a series of attacks on Muggle-born students, all linked to the Chamber of Secrets. He must uncover the truth behind the Chamber\'s secrets to save the school.', '../IMG/Books/hp_cos.jpg', 1, 20, 30);

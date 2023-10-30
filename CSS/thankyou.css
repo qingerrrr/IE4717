@@ -1,0 +1,20 @@
+.flex-container{
+    margin: 130px 0 100px;
+}
+
+.rightContent{
+    text-align: left;    
+}
+
+.rightContent h2{
+    margin-bottom: 30px;
+}
+
+.bookRight{
+    position: relative;
+}
+
+.indexBtn{
+    position:absolute;
+    bottom: 100px;
+}

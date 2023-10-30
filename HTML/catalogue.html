@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Book Catalogue</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Luckiest Guy' rel='stylesheet'>
+    <link rel="stylesheet" href="/CSS/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/CSS/global.css">
+    <link rel="stylesheet" href="/CSS/catalogue.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="navigationBarContainer">
+            <nav class="navBarContent">
+                <span></span>
+                <h1><a href="home.html">DUNOT</a></h1>
+                <span class="icons">
+                    <a href="catalogue.html"><i class="fa fa-book fa-2x" aria-hidden="true"></i></a>
+                    <div class="shoppingBag" data-count="5">
+                        <a href="#"><i class="fa fa-shopping-bag fa-2x" aria-hidden="true"></i></a>
+                    </div>
+                    <a href="#"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
+                </span>
+            </nav>
+        </div>
+
+        <div class="container">
+            <div class="contentContainer">
+                <h2>Choose Your Books</h2>
+
+                <div class="catalogueContent">
+                    <div class="filterbox">
+                        <form>
+                            <h4>Price Range</h4>
+                            <div class="price-input">
+                                <div class="field">
+                                    <span>From</span>
+                                    <input type="number" class="input-min" value="10" disabled>
+                                </div>
+
+                                <div class="field">
+                                    <span>To</span>
+                                    <input type="number" class="input-max" value="50" disabled>
+                                </div>
+                            </div>
+
+                            <div class="slider">
+                                <div class="progress"></div>
+                            </div>
+                            <div class="range-input">
+                                <input type="range" class="range-min" min="0" max="120" value="10" step="10">
+                                <input type="range" class="range-max" min="0" max="120" value="50" step="10">
+                            </div>
+
+                            <h4 style="margin-top: 50px;">Book Catagories</h4>
+                            <div class="bookFilter">
+                                <input type="checkbox" id="filter1" name="bookFilter" value="Fantasy">
+                                <label for="filter1">Fantasy</label><br>
+
+                                <input type="checkbox" id="filter2" name="bookFilter" value="Novel">
+                                <label for="filter2">Novel</label><br>
+
+                                <input type="checkbox" id="filter3" name="bookFilter" value="Self-Improvement">
+                                <label for="filter3">Self-Improvement</label><br>
+
+                                <input type="checkbox" id="filter4" name="bookFilter" value="Learning">
+                                <label for="filter4">Learning</label><br>
+                            </div>
+
+                            <input type="submit" class="button" id="filterBtn" value="Sort By Filter">
+                        </form>
+                    </div>
+
+                    <div class="catalogueBooks">
+                        <div class="items" id="book1">
+                            <a href="description.html"><img src="/IMG/Books/hp_cos.jpg" class="bookImg">
+                                <h3>Book Title 1</h3>
+                                <h4>$50.00</h4>
+                            </a>
+                        </div>
+
+                        <div class="items" id="book2">
+                            <a href="description.html"><img src="/IMG/Books/hp_cos.jpg" class="bookImg"></a>
+                            <h3>Book Title 1</h3>
+                            <h4>$50.00</h4>
+                        </div>
+
+                        <div class="items" id="book3">
+                            <a href="catalogue.html"><img src="/IMG/Books/Book8.jpg" class="bookImg"></a>
+                            <h3>Book Title 1</h3>
+                            <h4>$50.00</h4>
+                        </div>
+
+                        <div class="items" id="book1">
+                            <a href="catalogue.html"><img src="/IMG/Books/hp_cos.jpg" class="bookImg"></a>
+                            <h3>Book Title 1</h3>
+                            <h4>$50.00</h4>
+                        </div>
+
+                        <div class="items" id="book2">
+                            <a href="catalogue.html"><img src="/IMG/Books/hp_cos.jpg" class="bookImg"></a>
+                            <h3>Book Title 1</h3>
+                            <h4>$50.00</h4>
+                        </div>
+
+                        <div class="items" id="book3">
+                            <a href="catalogue.html"><img src="/IMG/Books/Book8.jpg" class="bookImg"></a>
+                            <h3>Book Title 1</h3>
+                            <h4>$50.00</h4>
+                        </div>
+
+                        <div class="items" id="book1">
+                            <a href="catalogue.html"><img src="/IMG/Books/hp_cos.jpg" class="bookImg">
+                                <h3>Book Title 1</h3>
+                                <h4>$50.00</h4>
+                            </a>
+                        </div>
+
+                        <div class="items" id="book2">
+                            <a href="catalogue.html"><img src="/IMG/Books/hp_cos.jpg" class="bookImg"></a>
+                            <h3>Book Title 1</h3>
+                            <h4>$50.00</h4>
+                        </div>
+
+                        <div class="items" id="book3">
+                            <a href="catalogue.html"><img src="/IMG/Books/Book8.jpg" class="bookImg"></a>
+                            <h3>Book Title 1</h3>
+                            <h4>$50.00</h4>
+                        </div>
+
+                        <div class="items" id="book1">
+                            <a href="catalogue.html"><img src="/IMG/Books/hp_cos.jpg" class="bookImg"></a>
+                            <h3>Book Title 1</h3>
+                            <h4>$50.00</h4>
+                        </div>
+
+                        <div class="items" id="book2">
+                            <a href="catalogue.html"><img src="/IMG/Books/hp_cos.jpg" class="bookImg"></a>
+                            <h3>Book Title 1</h3>
+                            <h4>$50.00</h4>
+                        </div>
+
+                        <div class="items" id="book3">
+                            <a href="catalogue.html"><img src="/IMG/Books/Book8.jpg" class="bookImg"></a>
+                            <h3>Book Title 1</h3>
+                            <h4>$50.00</h4>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div>
+                <h1>
+                    DUNOT BOOKSTORE
+                </h1>
+                <p>50 Nanyang Avenue, <br>South Spine, <br>Singapore 639798.</p>
+            </div>
+        </footer> 
+    </div>
+
+    <script>
+        window.addEventListener("load", (event) => {
+            const rangeInput = document.querySelectorAll(".range-input input");
+            const priceInput = document.querySelectorAll(".price-input input");
+            const progress = document.querySelector(".slider .progress");
+
+            let priceGap = 10;
+
+            rangeInput.forEach(input => {
+                input.addEventListener("input", e => {
+                    let minVal = parseInt(rangeInput[0].value);
+                    let maxVal = parseInt(rangeInput[1].value);
+
+                    if (maxVal - minVal < priceGap) {
+                        if (e.target.className === "range-min") {
+                            rangeInput[0].value = maxVal - priceGap;
+                        } else {
+                            rangeInput[1].value = minVal + priceGap;
+                        }
+
+                    } else {
+                        priceInput[0].value = minVal;
+                        priceInput[1].value = maxVal;
+
+                        progress.style.left = (minVal / rangeInput[0].max) * 100 + "%";
+                        progress.style.right = 100 - (maxVal / rangeInput[1].max) * 100 + "%";
+                    }
+                })
+            })
+
+            priceInput.forEach(input => {
+                input.addEventListener("input", e => {
+                    let minVal = parseInt(priceInput[0].value);
+                    let maxVal = parseInt(priceInput[1].value);
+
+                    if ((maxVal - minVal >= priceGap) && (maxVal <= 120)) {
+                        if (e.target.className === "input-min") {
+                            rangeInput[0].value = minVal;
+                            progress.style.left = (minVal / rangeInput[0].max) * 100 + "%";
+
+                        } else {
+                            rangeInput[1].value = maxVal;
+                            progress.style.right = 100 - (maxVal / rangeInput[1].max) * 100 + "%";
+                        }
+                    }
+                })
+            })
+        })
+    </script>
+</body>
+
+</html>
