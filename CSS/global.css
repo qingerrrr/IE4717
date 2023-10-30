@@ -7,8 +7,8 @@ div,
 body,
 input,
 img {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 h1,
@@ -20,138 +20,138 @@ p,
 button,
 input,
 span {
-    font-family: Nunito;
+  font-family: Nunito;
 }
 
 h2 {
-    font-size: 25px;
+  font-size: 25px;
 }
 
 p {
-    font-size: 20px;
-    color: black;
+  font-size: 20px;
+  color: black;
 }
 
 .container {
-    max-width: 100vw;
+  max-width: 100vw;
 }
 
 /*Navigation Bar-----------------------------------------------------------*/
 .navigationBarContainer {
-    height: 90px;
-    text-align: center;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
-    background-color: white;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    z-index: 50;
+  height: 90px;
+  text-align: center;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 50;
 }
 
 .navBarContent {
-    display: flex;
-    height: 100%;
-    padding-left: 50px;
-    padding-right: 50px;
-    align-items: center;
+  display: flex;
+  height: 100%;
+  padding-left: 50px;
+  padding-right: 50px;
+  align-items: center;
 }
 
 .navBarContent span {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 80px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 80px;
 }
 
 .navBarContent h1 {
-    font-family: Luckiest Guy;
-    color: #1C305C;
-    font-size: 60px;
+  font-family: Luckiest Guy;
+  color: #1c305c;
+  font-size: 60px;
 }
 
 .navBarContent h1 a {
-    text-decoration: none;
-    color: #1C305C;
+  text-decoration: none;
+  color: #1c305c;
 }
 
 .icons a {
-    color: #1C305C;
+  color: #1c305c;
 }
 
 .shoppingBag[data-count]:before {
-    content: attr(data-count);
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    background-color: #bb0e1c;
-    color: white;
-    border-radius: 50%;
-    padding: 5px 10px;
-    font-size: 12px;
-    z-index: 100;
+  content: attr(data-count);
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: #bb0e1c;
+  color: white;
+  border-radius: 50%;
+  padding: 5px 10px;
+  font-size: 12px;
+  z-index: 100;
 }
 
 .shoppingBag {
-    position: relative;
-    display: inline-block;
+  position: relative;
+  display: inline-block;
 }
 
 /*Book Imgs---------------------------------------------------*/
 .bookImg {
-    width: 100%;
-    max-width: 250px;
-    height: 399px;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
-    transition: transform .2s;
+  width: 100%;
+  max-width: 250px;
+  height: 399px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
 }
 
 .bookImg:hover {
-    cursor: pointer;
-    transform: scale(1.1);
+  cursor: pointer;
+  transform: scale(1.1);
 }
 
 /*Footer---------------------------------------------------*/
 footer {
-    height: 200px;
-    background-color: #E5E7EB;
+  height: 200px;
+  background-color: #e5e7eb;
 }
 
 footer h1 {
-    font-family: Luckiest Guy;
-    font-size: 35px;
-    padding-bottom: 15px;
-    color: #1C305C;
+  font-family: Luckiest Guy;
+  font-size: 35px;
+  padding-bottom: 15px;
+  color: #1c305c;
 }
 
 footer p {
-    font-size: 15px;
+  font-size: 15px;
 }
 
 footer div {
-    padding-top: 40px;
-    padding-left: 10%;
+  padding-top: 40px;
+  padding-left: 10%;
 }
 
 /*Button---------------------------------------------------*/
 .button {
-    width: 550px;
-    height: 62px;
-    border-radius: 5px;
-    border: 3px solid #FFCF00;
-    background: rgba(0, 0, 0, 0);
-    color: #1C305C;
-    box-shadow: inset 0 0 0 0 #FFCF00;
-    font-size: 25px;
-    font-style: normal;
-    font-weight: 900;
-    cursor: pointer;
-    transition: ease-out 0.3s;
+  width: 550px;
+  height: 62px;
+  border-radius: 5px;
+  border: 3px solid #ffcf00;
+  background: rgba(0, 0, 0, 0);
+  color: #1c305c;
+  box-shadow: inset 0 0 0 0 #ffcf00;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 900;
+  cursor: pointer;
+  transition: ease-out 0.3s;
 }
 
 .button:hover {
-    box-shadow: inset 550px 0 0 0 #FFCF00;
-    color: white;
+  box-shadow: inset 550px 0 0 0 #ffcf00;
+  color: white;
 }
 
 /*Others---------------------------------------------------*/

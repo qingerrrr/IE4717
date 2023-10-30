@@ -49,6 +49,7 @@ if (isset($_POST['addToCart'])) {
     $serializedProduct = serialize($bookInfo);
 
     // Set a cookie to store the serialized product data
+    setcookie("book_data", $serializedProduct, time() + 3600, "/"); //cookie staying for 1 hour
     setcookie("cart[$bookId]", $serializedProduct, time() + 3600, "/"); //cookie staying for 1 hour
 
     //header("Location: ../PHP_Webpage/add_to_cart.php");
