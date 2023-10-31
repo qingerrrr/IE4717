@@ -110,7 +110,7 @@ if (isset($bookArray['bookName'])) {
                   name = "postalCode"
                 />
               </div>
-              <button type="submit" class="btn_submit">Ready to Ship</button>
+              <a href="./thankyou.php" class="btn_submit">Ready Ship</a>
             </form>
           </div>
           <div class="column_6">
