@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unoguerta</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/responsive.css" />
+</head>
+<body>
+    <div class="data_main">
+        <div class="container">
+            <div class="delete_overlay"></div>
+            <!-- delete modal -->
+            <div
+              class="modal fade"
+              id="deleteModal"
+              tabindex="-1"
+              aria-labelledby="deleteModalLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-body">
+                    <h5>Confimation to Delete</h5>
+                    <h2 id="bookName" class="mb-4"></h2>
+                    <a href="data.html"
+                      id="deleteBook"
+                      class="btn_submit"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    >
+                      Delete
+                  </a>
+                    <br />
+                    <a href="data.html"
+                    class="btn_submit"
+                    id="dont_delete"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    >
+                      Don't Delete
+                </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
