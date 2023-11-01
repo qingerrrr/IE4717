@@ -70,8 +70,8 @@ if (isset($bookArray['bookName'])) {
       <div class="container">
 
 
-        <h1>Book Ship</h1>
-        <table class="table tableAdd", style = "margin-top: 50px;">
+        <!-- <h1>Book Ship</h1> -->
+        <table class="table tableAdd", style = "position:relative; top:50px;">
           <thead class="table-dark">
             <tr>
               <th scope="col">Title</th>
@@ -91,7 +91,7 @@ if (isset($bookArray['bookName'])) {
             ?>
           </tbody>
         </table>
-        <div class="basket_btn">
+        <div class="basket_btn" style = "position:relative;">
           <a href="./shipping.php" class="btn_submit">Check Out</a>
         </div>
       </div>

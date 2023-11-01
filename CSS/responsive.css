@@ -100,3 +100,46 @@
   position: relative;
   display: inline-block;
 }
+
+@media all and (max-width: 1160px) {
+  .container {
+    padding: 0 15px;
+    box-sizing: border-box;
+  }
+}
+
+@media all and (max-width: 991px) {
+  .custom_row {
+    flex-direction: column;
+  }
+  .column_6 {
+    width: 100%;
+  }
+  .container {
+    max-width: 720px;
+  }
+  .ms-2 {
+    margin-top: 40px;
+  }
+  #addBookModal .form_group {
+    text-align: left;
+  }
+
+  .avatar-upload .avatar-preview > div {
+    background-size: 100%;
+    height: 470px;
+    margin-bottom: 60px;
+  }
+}
+
+@media all and (max-width: 767px) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+@media all and (max-width: 576px) {
+  .avatar-upload .avatar-preview > div {
+    height: 200px;
+  }
+}

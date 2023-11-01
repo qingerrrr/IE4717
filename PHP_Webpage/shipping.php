@@ -110,7 +110,8 @@ if (isset($bookArray['bookName'])) {
                   name = "postalCode"
                 />
               </div>
-              <a href="./thankyou.php" class="btn_submit">Ready Ship</a>
+              <button type = "submit" class = "btn_submit">Ready to Ship</button>
+              <!-- <a href="./shipping.php" class="btn_submit" form="shippingForm">Ready Ship</a> -->
             </form>
           </div>
           <div class="column_6">
@@ -207,10 +208,11 @@ if (isset($bookArray['bookName'])) {
             }
 
             foreach($bookArray as $book){
+              $bookId = $book['bookId'];
               $bookName = $book['bookName'];
               $subtotal = $book['price'] * $book['qty'];
-              $sql = $conn->prepare("INSERT INTO orders_items (orderId, bookName, qty, subtotal) VALUES (?, ?, ?, ?)");
-              $sql->bind_param('isid', $latestOrderId, $bookName, $book['qty'],$subtotal);
+              $sql = $conn->prepare("INSERT INTO orders_items (orderId, bookId, bookName, qty, subtotal) VALUES (?, ?, ?, ?, ?)");
+              $sql->bind_param('iisid', $latestOrderId, $bookId, $bookName, $book['qty'],$subtotal);
               $sql->execute();
             }
             //Create Session                
@@ -223,6 +225,8 @@ if (isset($bookArray['bookName'])) {
 
             $sql->close();
             $conn->close();
+        }else{
+          echo "Form submission error.";
         }
         ?>
     </script>

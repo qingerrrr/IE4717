@@ -136,7 +136,7 @@ session_start();
                 $sql = $conn->prepare("SELECT * FROM users WHERE userName=? AND pw =?;");
 
             } else if ($userType == "Admin") {
-                $sql = $conn->prepare("SELECT * FROM admins WHERE userName=? AND pw =?;");
+                $sql = $conn->prepare("SELECT * FROM admins WHERE adminName=? AND pw =?;");
             }
 
             $sql->bind_param("ss", $name, $pw);
