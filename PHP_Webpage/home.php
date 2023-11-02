@@ -52,7 +52,15 @@ $sql = $conn->prepare("SELECT * FROM books WHERE stock > 0 ORDER BY RAND() LIMIT
                     }
                     ?>
                     <!-- <div class="shoppingBag"> -->
+
+                        <a href="../PHP_Webpage/basket.php"><i class="fa fa-shopping-bag fa-2x" aria-hidden="true"></i></a>
+                    </div>
+                    <a href="../PHP_Webpage/logout.php"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
+                </span>
+            </nav>
+
                     <a href="#"><i class="fa fa-shopping-bag fa-2x" aria-hidden="true"></i></a>
+
         </div>
         <a href="../PHP_Webpage/logout.php"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
         </span>

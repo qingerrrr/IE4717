@@ -78,7 +78,7 @@ $result = $sql->get_result(); // Get the result set from the executed statement
                     }
                     ?>
                     <!-- <div class="shoppingBag"> -->
-                        <a href="#"><i class="fa fa-shopping-bag fa-2x" aria-hidden="true"></i></a>
+                        <a href="../PHP_Webpage/basket.php"><i class="fa fa-shopping-bag fa-2x" aria-hidden="true"></i></a>
                     </div>
                     <a href="../PHP_Webpage/logout.php"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
                 </span>

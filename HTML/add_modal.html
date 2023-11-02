@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unoguerta</title>
+    
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/responsive.css" />
+</head>
+<body>
+  <div
+  class="modal fade"
+  id="addBookModal"
+  tabindex="-1"
+  aria-labelledby="addBookModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+      <div class="modal-body text-start">
+        <div class="container">
+          <div class="custom_row">
+            <div class="column_6">
+              <div class="avatar-upload">
+                <div class="avatar-edit">
+                  <input
+                    type="file"
+                    id="imageUpload"
+                    accept=".png, .jpg, .jpeg"
+                  />
+                  <label for="imageUpload">Change Image</label>
+                </div>
+                <div class="avatar-preview">
+                  <div
+                    id="imagePreview"
+                    style="
+                      background-image: url(https://placehold.co/500x500);
+                    "
+                  ></div>
+                </div>
+              </div>
+            </div>
+            <div class="column_6">
+              <div class="form_group"> 
+                  <label for="productsName" class="form-label"
+                    >Book Title</label
+                  >
+                  <input
+                    type="text"
+                    class="input_box"
+                    id="productsName"
+                  /> 
+              </div>
+              <div class="form_group_6">
+                <div class="form_group"> 
+                  <label for="price" class="form-label">Price</label>
+                  <input type="text" class="input_box" id="price" placeholder="10.00"> 
+                </div>
+                <div class="form_group"> 
+                    <label for="stocksLeft" class="form-label"
+                      >Quantity</label
+                    >
+                    <input
+                      type="text"
+                      class="input_box"
+                      id="stocksLeft"
+                      placeholder="20"
+                    /> 
+                </div>
+              </div>
+              <div class="form_group"> 
+                  <label for="description" class="form-label"
+                    >Book Description</label
+                  >
+                  <textarea
+                    class="input_box"
+                    id="description"
+                    rows="15"
+                    placeholder="Book Social media influencer Vex King overcame great adversity in his early to become a source of hope for thousands of young people. In this book, he shares his wisdom on life, love and purpose in the hope that you will feel guided to release undesirable feelings, experience mare joy and live what he calls a greater life."
+                  ></textarea> 
+              </div>
+            </div>
+            <div class="add_btn_last">
+              <a href="data.html"
+                id="addBook"
+                class="btn_submit"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              >
+                Add New Book
+            </a>
+              <a href="admin_addbook.html"
+              class="btn_submit"
+              id="addBookCencel"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              >
+                Cancel
+          </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
