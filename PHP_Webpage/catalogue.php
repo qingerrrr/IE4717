@@ -46,14 +46,14 @@ if (isset($_GET["priceRange"]) && isset($_GET["filters"])) {
 
     $sql = $conn->prepare("SELECT * FROM books 
     JOIN categories ON books.catId = categories.catId
-    WHERE categories.catName IN ($filterPlaceholders) AND price >= ? AND price <= ?;");
+    WHERE categories.catName IN ($filterPlaceholders) AND price >= ? AND price <= ? AND stock > 0;");
 
     $bindParams = array_merge($filters, [$min, $max]);
     $types = str_repeat('s', count($filters)) . 'ii';
     $sql->bind_param($types, ...$bindParams);
 
 } else {
-    $sql = $conn->prepare("SELECT * FROM books");
+    $sql = $conn->prepare("SELECT * FROM books WHERE stock > 0");
     $gotFitler = false;
 }
 

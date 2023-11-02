@@ -123,12 +123,12 @@ $sql->execute(); // Execute the prepared statement
 
                         if (strpos($inputStringLower, $searchString) !== false) {
                             //has potter
-                            $sql = $conn->prepare("SELECT * FROM books WHERE (bookName LIKE '%Harry Potter%' OR catId = ?) AND bookId <> ?;");
+                            $sql = $conn->prepare("SELECT * FROM books WHERE (bookName LIKE '%Harry Potter%' OR catId = ?) AND bookId <> ? AND stock > 0;");
                             $sql->bind_param("ii", $row['catId'], $bookId);
 
                         } else {
                             //no potter                    
-                            $sql = $conn->prepare("SELECT * FROM books WHERE bookId <> ? ORDER BY RAND() LIMIT 4;");
+                            $sql = $conn->prepare("SELECT * FROM books WHERE bookId <> ? AND stock > 0 ORDER BY RAND() LIMIT 4;");
                             $sql->bind_param("i", $bookId);
                         }
                         ?>
@@ -177,13 +177,14 @@ $sql->execute(); // Execute the prepared statement
         document.addEventListener("DOMContentLoaded", function() {
             if(!performValidation()){                
                 const errorSpan = document.getElementById("errorSpan");
-                errorSpan.textContent = 'Item has added to cart.';
+                errorSpan.textContent = 'Item has already been added to cart.';
                 errorSpan.style.visibility = 'visible';
 
-                // var addtocartBtn = document.getElementById('descBtn');
-                // addtocartBtn.setAttribute("disabled", "true");
-                // const numberInput = document.getElementById("qtyInput");
-                // numberInput.setAttribute("disabled", "true");
+                var addtocartBtn = document.getElementById('descBtn');
+                addtocartBtn.setAttribute("disabled", "true");         
+                
+                const numberInput = document.getElementById("qtyInput");
+                numberInput.setAttribute("disabled", "true");
             }
         });
 
@@ -256,7 +257,11 @@ $sql->execute(); // Execute the prepared statement
             // Check if the cart cookie is set and if it contains the item with the specified bookId
             if (isset($_COOKIE['cart']) && isset($_COOKIE['cart'][$bookId])) {
                 // The item with the specified bookId is already in the cart
-                echo "console.log('Item with bookId $bookId is in the cart.');";                
+                $cartData = unserialize($_COOKIE['cart'][$bookId]);
+                $qty = $cartData['qty'];
+
+                echo "console.log('Item with bookId $bookId is in the cart.');";     
+                echo "numberInput.value='$qty';";
                 echo "return false;";
 
             } else {

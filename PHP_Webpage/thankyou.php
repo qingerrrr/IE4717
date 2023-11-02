@@ -88,7 +88,7 @@ if (isset($_COOKIE['cart'])) {
 <?php
 $to = 'f31ee@localhost';
 $subject = 'Dunot Order Number';
-$message = 'Your order has been received! The shipping is expected to arrive within 10 to 14 days. Thank you!';
+$message = 'Dear Customer, Your order has been received! The shipping is expected to arrive within 10 to 14 days. Thank you!';
 $headers = 'From: f32ee@localhost' . "\r\n" .
     'Reply-To: f32ee@localhost' . "\r\n" .
     'X-Mailer: PHP/' . phpversion();
