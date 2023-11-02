@@ -1,4 +1,4 @@
-h2{
+h2 {
     font-size: 45px;
 }
 
@@ -26,16 +26,16 @@ h2{
 }
 
 .rightContent {
-    align-self: center;  
+    align-self: center;
 }
 
-.section1 h2 {      
+.section1 h2 {
     color: white;
     min-width: 600px;
     margin-bottom: 65px;
 }
 
-.rightContent button {   
+.rightContent button {
     color: white;
 }
 
@@ -56,13 +56,13 @@ h2{
     text-align: center;
 }
 
-.section2 h2 {    
-    color: #1C305C;    
+.section2 h2 {
+    color: #1C305C;
     padding-top: 100px;
     padding-bottom: 80px;
 }
 
-.alltimefav{
+.alltimefav {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -72,35 +72,35 @@ h2{
 
 /*Section 3*/
 .section3Container {
-    width: 100%;  
-    background-image: url("../IMG/Webpage_Images/hp2.png");        
+    width: 100%;
+    background-image: url("../IMG/Webpage_Images/hp2.png");
 }
 
-.section3 {    
+.section3 {
     display: flex;
-    justify-content: flex-end;      
+    justify-content: flex-end;
     height: 880px;
     margin: 0 auto;
 }
 
-.section3 h2 {    
-    padding-bottom: 80px;    
+.section3 h2 {
+    padding-bottom: 80px;
     color: #1C305C;
     width: 600px;
 }
 
 .section3Content {
-    background-color: white;  
-    opacity: 0.9;  
+    background-color: white;
+    opacity: 0.9;
     padding: 30px;
     border-radius: 10px;
-    text-align: center; 
+    text-align: center;
     align-self: flex-end;
     margin-bottom: 20px;
     margin-right: 100px;
 }
 
-.section3Content button {   
+.section3Content button {
     color: #1C305C;
 }
 
@@ -119,8 +119,8 @@ h2{
     height: 880px;
     margin: 0 auto;
     text-align: center;
-    display: flex;  
-    justify-content: space-between;  
+    display: flex;
+    justify-content: space-between;
 }
 
 .section4 img {
@@ -130,7 +130,7 @@ h2{
     margin-top: 80px;
 }
 
-.rightContent{
+.rightContent {
     width: 650px;
 }
 
@@ -152,3 +152,18 @@ p {
     font-weight: 500;
     color: black;
 }
+
+/*Media Query---------------------------------------------------*/
+/* Large devices (laptops/desktops, 992px and up) */
+/* @media only screen and (min-width: 992px ) and (max-device-width: 1024px){
+  
+     .bookImg{
+        width: 60%;
+        height: auto;
+    } 
+
+    .alltimefav a{
+        flex: 0 0 200px;
+    }
+
+} */
