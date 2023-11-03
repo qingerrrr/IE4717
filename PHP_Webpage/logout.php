@@ -8,7 +8,7 @@ if (isset($_COOKIE['cart'])) {
     }
 }
 
-//Unset session
+//Unset Session
 Session_start();
 // remove all session variables
 session_unset(); 

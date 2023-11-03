@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap"); */
 
 .navigationBarContainer {
   height: 90px;
@@ -64,6 +64,7 @@
   position: relative;
   height: 100%;
 }
+
 .avatar-upload .avatar-edit {
   position: absolute;
   z-index: 1;
@@ -71,10 +72,12 @@
   left: 50%;
   transform: translateX(-50%);
 }
+
 .avatar-upload .avatar-edit input {
   display: none;
 }
-.avatar-upload .avatar-edit input + label {
+
+.avatar-upload .avatar-edit input+label {
   display: inline-block;
   cursor: pointer;
   text-decoration: underline;
@@ -83,12 +86,14 @@
   position: relative;
   text-align: center;
 }
+
 .avatar-upload .avatar-preview {
   width: 100%;
   height: 100%;
   position: relative;
 }
-.avatar-upload .avatar-preview > div {
+
+.avatar-upload .avatar-preview>div {
   width: 100%;
   height: 100%;
   background-size: cover;
@@ -177,13 +182,16 @@ video {
   font-size: 100%;
   background: transparent;
 }
+
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
 button {
   outline: none !important;
 }
+
 input {
   outline: none !important;
 }
@@ -198,12 +206,14 @@ p {
   margin: 0;
   padding: 0;
 }
+
 input,
 button,
 textarea,
 select {
   outline: none;
 }
+
 .btn.focus,
 .btn:focus {
   outline: none;
@@ -216,20 +226,24 @@ ul {
   padding: 0;
   list-style: none;
 }
+
 a {
   margin: 0;
   padding: 0;
   text-decoration: none;
 }
+
 a:hover {
   text-decoration: none;
 }
+
 body {
   font-size: 16px;
   font-weight: 400;
   overflow: hidden;
   font-family: "Open Sans", sans-serif;
 }
+
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
@@ -263,7 +277,7 @@ html {
 
 .container {
   max-width: 1140px;
-  width: 100%;
+  width: 80%;
   margin: 0 auto;
 }
 
@@ -425,8 +439,18 @@ table {
 }
 
 .table-dark {
-  background: #fff;
-  color: #000;
+  background: #1c305c;
+  color: #fff;
+  border-collapse: collapse;
+}
+
+.table-dark th {
+  font-size: 20px;
+  text-align: center;
+}
+
+.table-dark td {
+  font-size: 20px;
 }
 
 #tableToggle {
@@ -437,10 +461,6 @@ table {
   background: transparent;
   border: none;
   cursor: pointer;
-}
-
-.table tr th {
-  text-align: left;
 }
 
 #tableBody tr {
@@ -491,6 +511,7 @@ table {
 td:nth-child(1) {
   width: 40%;
 }
+
 th:nth-child(1) {
   width: 40%;
 }

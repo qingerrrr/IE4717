@@ -1,3 +1,12 @@
+<?php
+//Ensure user is not logged in
+session_start();
+
+if (isset($_SESSION["name"])) {
+    echo 'Direct access not permitted. Please log out properly, <a href="home.php">back to home</a>.';
+    die();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,10 +19,6 @@
     <link rel="stylesheet" href="../CSS/global.css">
     <link rel="stylesheet" href="../CSS/register.css">
 </head>
-
-<?php
-session_start();
-?>
 
 <body>
     <div class="flex-container">

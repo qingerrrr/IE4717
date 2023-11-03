@@ -2,7 +2,7 @@
 //Ensure user is logged in
 session_start();
 
-if (!isset($_SESSION["name"])){
+if (!isset($_SESSION["name"])) {
     echo 'Direct access not permitted. Please <a href="index.php">log in</a>.';
     die();
 }
@@ -11,7 +11,7 @@ if (!isset($_SESSION["name"])){
 if (isset($_COOKIE['cart'])) {
     // Calculate the number of items in the cart
     $cartNum = count($_COOKIE['cart']);
-    var_dump($_COOKIE['cart']);
+    //var_dump($_COOKIE['cart']);
 } else {
     $cartNum = 0;
 }
@@ -41,19 +41,38 @@ if (isset($_GET["priceRange"]) && isset($_GET["filters"])) {
     $min = $priceRange[0];
     $max = $priceRange[1];
 
-    $filters = explode(',', $_GET["filters"]);
-    $filterPlaceholders = implode(',', array_fill(0, count($filters), '?'));
+    if ($_GET["filters"] == "") {
+        //No filter on category
+        //$filterPlaceholders = "";
+        $sql = $conn->prepare("SELECT * FROM books 
+        JOIN categories ON books.catId = categories.catId
+        WHERE price >= ? AND price <= ?;");
+        $sql->bind_param("dd", $min, $max);
 
-    $sql = $conn->prepare("SELECT * FROM books 
+    } else {
+        $filters = explode(',', $_GET["filters"]);
+        $filterPlaceholders = implode(',', array_fill(0, count($filters), '?'));
+        //var_dump($filterPlaceholders);
+
+        $sql = $conn->prepare("SELECT * FROM books 
     JOIN categories ON books.catId = categories.catId
-    WHERE categories.catName IN ($filterPlaceholders) AND price >= ? AND price <= ? AND stock > 0;");
+    WHERE " . (!empty($filterPlaceholders) ? "categories.catName IN ($filterPlaceholders) AND " : "") . "price >= ? AND price <= ?;");
 
-    $bindParams = array_merge($filters, [$min, $max]);
-    $types = str_repeat('s', count($filters)) . 'ii';
-    $sql->bind_param($types, ...$bindParams);
+        $bindParams = array_merge($filters, [$min, $max]);
+        $types = str_repeat('s', count($filters)) . 'ii';
+        $sql->bind_param($types, ...$bindParams);
+    }
+
+    // $sql = $conn->prepare("SELECT * FROM books 
+    // JOIN categories ON books.catId = categories.catId
+    // WHERE " . (!empty($filterPlaceholders) ? "categories.catName IN ($filterPlaceholders) AND " : "") . "price >= ? AND price <= ?;");
+
+    // $bindParams = array_merge($filters, [$min, $max]);
+    // $types = str_repeat('s', count($filters)) . 'ii';
+    // $sql->bind_param($types, ...$bindParams);
 
 } else {
-    $sql = $conn->prepare("SELECT * FROM books WHERE stock > 0");
+    $sql = $conn->prepare("SELECT * FROM books");
     $gotFitler = false;
 }
 
@@ -72,92 +91,93 @@ $result = $sql->get_result(); // Get the result set from the executed statement
 
                     <?php
                     if ($cartNum > 0) {
-                        echo "<div class='shoppingBag' data-count='" . $cartNum . "'>";                        
-                    }else{
+                        echo "<div class='shoppingBag' data-count='" . $cartNum . "'>";
+                    } else {
                         echo "<div class='shoppingBag'>";
                     }
                     ?>
                     <!-- <div class="shoppingBag"> -->
-                        <a href="../PHP_Webpage/basket.php"><i class="fa fa-shopping-bag fa-2x" aria-hidden="true"></i></a>
-                    </div>
-                    <a href="../PHP_Webpage/logout.php"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
-                </span>
-            </nav>
+                    <a href="../PHP_Webpage/basket.php"><i class="fa fa-shopping-bag fa-2x" aria-hidden="true"></i></a>
         </div>
-        <div class="container">
-            <div class="contentContainer">
-                <h2>Choose Your Books</h2>
+        <a href="../PHP_Webpage/logout.php"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
+        </span>
+        </nav>
+    </div>
 
-                <div class="catalogueContent">
-                    <div class="filterbox">
-                        <form>
-                            <h4>Price Range</h4>
-                            <div class="price-input">
-                                <div class="field">
-                                    <span>From</span>
-                                    <input type="number" class="input-min" value="0" disabled>
-                                </div>
+    <div class="container">
+        <div class="contentContainer">
+            <h2>Choose Your Books</h2>
 
-                                <div class="field">
-                                    <span>To</span>
-                                    <input type="number" class="input-max" value="120" disabled>
-                                </div>
+            <div class="catalogueContent">
+                <div class="filterbox">
+                    <form>
+                        <h4>Price Range</h4>
+                        <div class="price-input">
+                            <div class="field">
+                                <span>From</span>
+                                <input type="number" class="input-min" value="0" disabled>
                             </div>
 
-                            <div class="slider">
-                                <div class="progress"></div>
+                            <div class="field">
+                                <span>To</span>
+                                <input type="number" class="input-max" value="120" disabled>
                             </div>
-                            <div class="range-input">
-                                <input type="range" class="range-min" min="0" max="120" value="0" step="10">
-                                <input type="range" class="range-max" min="0" max="120" value="120" step="10">
-                            </div>
+                        </div>
 
-                            <h4 style="margin-top: 50px;">Book Catagories</h4>
-                            <div class="bookFilter">
-                                <input type="checkbox" id="filter1" name="bookFilter" value="Fantasy">
-                                <label for="filter1">Fantasy</label><br>
+                        <div class="slider">
+                            <div class="progress"></div>
+                        </div>
+                        <div class="range-input">
+                            <input type="range" class="range-min" min="0" max="120" value="0" step="10">
+                            <input type="range" class="range-max" min="0" max="120" value="120" step="10">
+                        </div>
 
-                                <input type="checkbox" id="filter2" name="bookFilter" value="Novel">
-                                <label for="filter2">Novel</label><br>
+                        <h4 style="margin-top: 50px;">Book Catagories</h4>
+                        <div class="bookFilter">
+                            <input type="checkbox" id="filter1" name="bookFilter" value="Fantasy">
+                            <label for="filter1">Fantasy</label><br>
 
-                                <input type="checkbox" id="filter3" name="bookFilter" value="Self-Improvement">
-                                <label for="filter3">Self-Improvement</label><br>
+                            <input type="checkbox" id="filter2" name="bookFilter" value="Novel">
+                            <label for="filter2">Novel</label><br>
 
-                                <input type="checkbox" id="filter4" name="bookFilter" value="Learning">
-                                <label for="filter4">Learning</label><br>
-                            </div>
+                            <input type="checkbox" id="filter3" name="bookFilter" value="Self-Improvement">
+                            <label for="filter3">Self-Improvement</label><br>
 
-                            <!-- <input type="submit" class="button" id="filterBtn" value="Sort By Filter"> -->
-                            <button class="button" id="filterBtn" onclick="filter()">Sort By Filter</button>
-                        </form>
-                    </div>
+                            <input type="checkbox" id="filter4" name="bookFilter" value="Learning">
+                            <label for="filter4">Learning</label><br>
+                        </div>
 
-                    <div class="catalogueBooks">
-                        <?php
-                        if ($result->num_rows > 0) {
-                            while ($row = $result->fetch_assoc()) {
-                                echo "<div class='items' id='{$row['bookId']}'>";
-                                echo "<a href='description.php?bookId={$row['bookId']}'><img src='{$row['img']}' class='bookImg'>";
-                                echo "<h3>{$row['bookName']}</h3>";
-                                echo "<h4>$" . number_format($row['price'], 2) . "</h4>";
-                                echo "</a>";
-                                echo "</div>";
-                            }
+                        <!-- <input type="submit" class="button" id="filterBtn" value="Sort By Filter"> -->
+                        <button class="button" id="filterBtn" onclick="filter()">Sort By Filter</button>
+                    </form>
+                </div>
+
+                <div class="catalogueBooks">
+                    <?php
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<div class='items' id='{$row['bookId']}'>";
+                            echo "<a href='description.php?bookId={$row['bookId']}'><img src='{$row['img']}' class='bookImg'>";
+                            echo "<h3>{$row['bookName']}</h3>";
+                            echo "<h4>$" . number_format($row['price'], 2) . "</h4>";
+                            echo "</a>";
+                            echo "</div>";
                         }
-                        ?>
-                    </div>
+                    }
+                    ?>
                 </div>
             </div>
         </div>
+    </div>
 
-        <footer>
-            <div>
-                <h1>
-                    DUNOT BOOKSTORE
-                </h1>
-                <p>50 Nanyang Avenue, <br>South Spine, <br>Singapore 639798.</p>
-            </div>
-        </footer>
+    <footer>
+        <div>
+            <h1>
+                DUNOT BOOKSTORE
+            </h1>
+            <p>50 Nanyang Avenue, <br>South Spine, <br>Singapore 639798.</p>
+        </div>
+    </footer>
     </div>
 
     <script>

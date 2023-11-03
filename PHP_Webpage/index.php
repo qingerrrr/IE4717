@@ -1,3 +1,12 @@
+<?php
+//Ensure user is not logged in
+session_start();
+
+if (isset($_SESSION["name"])) {
+    echo 'Direct access not permitted. Please log out properly, <a href="home.php">back to home</a>.';
+    die();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,10 +19,6 @@
     <link rel="stylesheet" href="../CSS/global.css">
     <link rel="stylesheet" href="../CSS/index.css">
 </head>
-
-<?php
-session_start();
-?>
 
 <body>
     <div class="flex-container">
@@ -145,10 +150,17 @@ session_start();
             $result = $sql->get_result(); // Get the result set from the executed statement   
         
             if ($result->num_rows > 0) {
+                $id = -1;
+
+                while ($row = $result->fetch_assoc()) {
+                    $id = $row['userId'];
+                }
+
                 //Correct username and pw                 
                 if ($userType == "User") {
                     //Create Session                    
                     $_SESSION['name'] = $name;
+                    $_SESSION['userId'] = $id;
 
                     echo "window.location.href = 'home.php';";
 
