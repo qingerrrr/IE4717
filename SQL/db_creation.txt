@@ -38,8 +38,8 @@ create table orders
 
 create table orders_items
 (  orderItemsId int unsigned not null auto_increment primary key,
-   orderId int unsigned not null,
-   bookId int unsigned not null,    
+   orderId int unsigned not null,  
+   bookId int unsigned not null,   
    bookName varchar(100) not null,   
    qty int unsigned,
    subtotal float(6,2) not null

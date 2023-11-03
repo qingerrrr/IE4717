@@ -19,6 +19,10 @@ label,
 p,
 button,
 input,
+table,
+tr,
+th,
+td
 span {
   font-family: Nunito;
 }
