@@ -123,7 +123,7 @@ $sql->execute(); // Execute the prepared statement
 
                         if (strpos($inputStringLower, $searchString) !== false) {
                             //has potter
-                            $sql = $conn->prepare("SELECT * FROM books WHERE (bookName LIKE '%Harry Potter%' OR catId = ?) AND bookId <> ? AND stock > 0;");
+                            $sql = $conn->prepare("SELECT * FROM books WHERE (bookName LIKE '%Harry Potter%' OR catId = ?) AND bookId <> ? AND stock > 0 LIMIT 4;");
                             $sql->bind_param("ii", $row['catId'], $bookId);
 
                         } else {

@@ -2,8 +2,8 @@
 //Ensure user is not logged in
 session_start();
 
-if (isset($_SESSION["name"])) {
-    echo 'Direct access not permitted. Please log out properly, <a href="home.php">back to home</a>.';
+if (isset($_SESSION["name"]) || isset($_SESSION["adminName"])) {
+    echo 'Direct access not permitted.';
     die();
 }
 ?>

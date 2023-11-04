@@ -1,5 +1,12 @@
 <?php
+//Ensure user is logged in
 session_start();
+
+if (!isset($_SESSION["adminName"])) {
+    echo 'Direct access not permitted. Please <a href="index.php">log in</a>.';
+    die();
+}
+
 include '../PHP_Function/db_connection.php';
 if (isset($_GET['bookId'])) {
     $bookId = $_GET['bookId'];
@@ -81,20 +88,19 @@ include '../PHP_Function/db_connection.php';
           $sql->bind_param("i", $currentbookId);
           $sql->execute();
           if ($sql->execute()) {
-              echo "Record updated successfully.";
+              //echo "Record updated successfully.";
+              echo 'window.location.href = "admin_addbook.php";';
           } else {
-              echo "Error updating record: " . $sql->error;
+              //echo "Error updating record: " . $sql->error;
           }
 
-          echo "Form submission successful.";
+          //echo "Form submission successful.";
           // sleep(5);
       }else{
-        echo "Form submission error.";
+       // echo "Form submission error.";
       }
       // sleep(1);
-      echo '<script type="text/javascript">
-      location.reload();
-      </script>';
+   
       ?>
 
       

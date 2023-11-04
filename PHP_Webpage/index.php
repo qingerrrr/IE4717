@@ -2,8 +2,8 @@
 //Ensure user is not logged in
 session_start();
 
-if (isset($_SESSION["name"])) {
-    echo 'Direct access not permitted. Please log out properly, <a href="home.php">back to home</a>.';
+if (isset($_SESSION["name"]) || isset($_SESSION["adminName"])) {
+    echo 'Direct access not permitted.';
     die();
 }
 ?>
@@ -150,14 +150,14 @@ if (isset($_SESSION["name"])) {
             $result = $sql->get_result(); // Get the result set from the executed statement   
         
             if ($result->num_rows > 0) {
-                $id = -1;
-
-                while ($row = $result->fetch_assoc()) {
-                    $id = $row['userId'];
-                }
+                $id = -1;                
 
                 //Correct username and pw                 
                 if ($userType == "User") {
+                    while ($row = $result->fetch_assoc()) {
+                        $id = $row['userId'];
+                    }
+
                     //Create Session                    
                     $_SESSION['name'] = $name;
                     $_SESSION['userId'] = $id;
@@ -165,7 +165,15 @@ if (isset($_SESSION["name"])) {
                     echo "window.location.href = 'home.php';";
 
                 } else if ($userType == "Admin") {
-                    echo "window.location.href = ''";
+                    while ($row = $result->fetch_assoc()) {
+                        $id = $row['adminId'];
+                    }
+
+                    //Create Session                    
+                    $_SESSION['adminName'] = $name;                    
+                    $_SESSION['adminId'] = $id;
+
+                    echo "window.location.href = 'admin_addbook.php';";
                 }
 
             } else {
