@@ -11,6 +11,7 @@ if (isset($_COOKIE['cart'])) {
   // Calculate the number of items in the cart
   $cartNum = count($_COOKIE['cart']);
   $BookData = $_COOKIE['cart'];
+  print_r($BookData);
 } else {
   $cartNum = 0;
 }
@@ -37,6 +38,7 @@ if (isset($bookArray['bookName'])) {
   <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet'>
   <link href='https://fonts.googleapis.com/css?family=Luckiest Guy' rel='stylesheet'>
   <link rel="stylesheet" href="../CSS/font-awesome-4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
   <link rel="stylesheet" href="../CSS/global.css">  
   <link rel="stylesheet" href="../CSS/style.css" />
   <link rel="stylesheet" href="../CSS/responsive.css" />
@@ -73,6 +75,7 @@ if (isset($bookArray['bookName'])) {
           <th scope="col" style="text-align:left">Title</th>
           <th scope="col">Quantity</th>
           <th scope="col">Cost</th>
+          <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
@@ -83,6 +86,7 @@ if (isset($bookArray['bookName'])) {
           echo '<td>' . $book['bookName'] . '</td>';
           echo '<td style="text-align:center">' . $book['qty'] . '</td>';
           echo '<td style="text-align:center">' . '$' . $book['price'] * $book['qty'] . '</td>';
+          echo "<td><a href='delete_basket.php?bookId={$book['bookId']}'><i class='fa-solid fa-trash'></td>";
           echo '</tr>';
           $total = $total + ($book['price'] * $book['qty']);
         }
