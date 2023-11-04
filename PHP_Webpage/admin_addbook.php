@@ -31,6 +31,7 @@ $book_count = $result->num_rows;
 
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< Updated upstream
 
 <head>
   <meta charset="UTF-8" />
@@ -91,6 +92,59 @@ $book_count = $result->num_rows;
           <a href="add_modal.php" type="button" class="btn_submit" id="addBookBtn" data-bs-toggle="modal"
             data-bs-target="#addBookModal">
             Add Book
+=======
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unoguerta</title>
+    <!-- styles -->  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+    <link rel="stylesheet" href="../CSS/style.css" />
+    <link rel="stylesheet" href="../CSS/responsive.css" />
+  </head>
+  <body>
+    <!-- booking list start -->
+    <div class="booking-list my-5">
+      <div class="container">
+        <div class="row">
+          <div id="tableToggle" class="tableToggle">
+            
+            <table class="table tableAdd">
+              <thead class="table-dark">
+                <tr>
+                  <th scope="col" class="orth">Books</th>
+                  <th scope="col" class="orth">Stocks Left</th>
+                  <th scope="col" class="orth">Price</th> 
+                  <th scope="col"></th> 
+                  <th scope="col"></th> 
+                  <?php
+                    while ($row = $result->fetch_assoc()) {
+                        echo '<tr>';
+                        echo '<td>' . $row['bookName'] . '</td>';
+                        echo '<td>' . $row['stock'] . '</td>';
+                        echo '<td>' .'$'. $row['price'] . '</td>';
+                        echo "<td><a href='edit_modal.php?bookId={$row['bookId']}'><i class='fa-solid fa-pen'></td>";
+                        echo "<td><a href='delete.php?bookId={$row['bookId']}'><i class='fa-solid fa-trash'></td>";
+                        echo '</tr>';
+                    }
+                    ?>
+                </tr>
+              </thead>
+              <tbody id="tableBody">
+              </tbody>
+            </table>  
+          </div>
+          <div class="text_button">
+            <!-- Button trigger add book modal -->
+            <a href="add_modal.php"
+              type="button"
+              class="btn_submit"
+              id="addBookBtn"
+              data-bs-toggle="modal"
+              data-bs-target="#addBookModal"
+            >
+              Add Book
+>>>>>>> Stashed changes
           </a>
         </div>
       </div>

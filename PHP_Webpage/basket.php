@@ -11,7 +11,11 @@ if (isset($_COOKIE['cart'])) {
   // Calculate the number of items in the cart
   $cartNum = count($_COOKIE['cart']);
   $BookData = $_COOKIE['cart'];
+<<<<<<< Updated upstream
   //print_r($BookData);
+=======
+  print_r($BookData);
+>>>>>>> Stashed changes
 } else {
   $cartNum = 0;
 }
@@ -92,12 +96,20 @@ if (isset($bookArray['bookName'])) {
           $total = $total + ($book['price'] * $book['qty']);
         }
         ?>
+<<<<<<< Updated upstream
         <tr class="text-last border-top">
           <td colspan="3" class="text_total">
             Total Cost $
             <?php echo $total; ?><span id="basketTotal"></span>
           </td>
         </tr>
+=======
+            <tr class="text-last border-top">
+              <td colspan="3" class="text_total">
+                Total Cost $<?php echo $total; ?><span id="basketTotal"></span>
+              </td>
+            </tr>
+>>>>>>> Stashed changes
       </tbody>
     </table>
     <div class="basket_btn" style="position:relative;">
