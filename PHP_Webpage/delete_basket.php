@@ -82,17 +82,17 @@ include '../PHP_Function/db_connection.php';
                                     // Check if the entry exists in the array and delete it
                                     if (array_key_exists($entryToDelete, $cookieArray)) {
                                         unset($cookieArray[$entryToDelete]);
-                                        print_r('delete successful');
+                                        //print_r('delete successful');
                                         // Set the modified array back as a cookie
                                         setcookie("cart[$currentbookId]", serialize($cookieArray), time() - 3600, "/");
                                         // setcookie('cart', serialize($cookieArray), time() + 3600, '/');
+                                        echo "window.location.href = 'basket.php';";
                                     }else{
-                                        print_r('delete unsuccessful');
+                                        //print_r('delete unsuccessful');
                                     }
                                 }
                             ?>
-                        });
-                        window.location.href = 'basket.php';
+                        });                        
                     </script>
                     <br />
                     <a href="basket.php"
