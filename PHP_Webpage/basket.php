@@ -77,14 +77,21 @@ if (isset($bookArray['bookName'])) {
       </thead>
       <tbody>
         <?php
+        $total = 0;
         foreach ($bookArray as $book) {
           echo '<tr>';
           echo '<td>' . $book['bookName'] . '</td>';
           echo '<td style="text-align:center">' . $book['qty'] . '</td>';
           echo '<td style="text-align:center">' . '$' . $book['price'] * $book['qty'] . '</td>';
           echo '</tr>';
+          $total = $total + ($book['price'] * $book['qty']);
         }
         ?>
+            <tr class="text-last border-top">
+              <td colspan="3" class="text_total">
+                Total Cost $<?php echo $total; ?><span id="basketTotal"></span>
+              </td>
+            </tr>
       </tbody>
     </table>
     <div class="basket_btn" style="position:relative;">
