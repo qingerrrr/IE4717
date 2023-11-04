@@ -69,7 +69,7 @@ p {
 }
 
 .navBarContent h1 {
-  font-family: Luckiest Guy;
+  font-family: Luckiest Guy !important;
   color: #1c305c;
   font-size: 60px;
 }

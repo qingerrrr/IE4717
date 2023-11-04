@@ -1,0 +1,62 @@
+h1,
+h2,
+h3,
+h4,
+label,
+p,
+button,
+input,
+table,
+tr,
+th,
+td span {
+    font-family: Nunito;
+}
+
+/*Navigation Bar-----------------------------------------------------------*/
+.navigationBarContainer {
+    height: 90px;
+    text-align: center;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 50;
+}
+
+.navBarContent {
+    display: flex;
+    height: 100%;
+    padding-left: 50px;
+    padding-right: 50px;
+    align-items: center;
+}
+
+.navBarContent span {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 80px;
+}
+
+.navBarContent h1 {
+    font-family: Luckiest Guy;
+    color: #1c305c;
+    font-size: 60px;
+}
+
+.navBarContent h1 a {
+    text-decoration: none;
+    color: #1c305c;
+}
+
+.icons a {
+    color: #1c305c;
+}
+
+/*Add book page*/
+.booking-list {
+    margin-top: 150px;
+}
