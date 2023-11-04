@@ -78,26 +78,29 @@ if (isset($bookArray['bookName'])) {
       <div class="column_6">
         <form class="shipping_form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" id="shippingForm">
           <h5>Contact Information</h5>
+          <p class="errormsg" id="errorOverall">Invalid inputs, please check again.</p>
           <div class="email_group">
-            <input type="email" id="email" class="input_box" placeholder="Email" , name="email" />
+            <input type="email" id="email" class="input_box" placeholder="Email" , name="email" required />
           </div>
+          <p class="errormsg" id="errorUser">Only letters (a-z, A-Z), numbers, underscores
+                        and full stops are allowed</p>
           <h5>Ship To</h5>
           <div>
-            <input type="text" id="country" class="input_box" placeholder="Country/Region" name="country" />
+            <input type="text" id="country" class="input_box" placeholder="Country/Region" name="country" required/>
           </div>
           <div>
-            <input type="text" id="Name" class="input_box" placeholder="Name" name="recipientName" />
+            <input type="text" id="Name" class="input_box" placeholder="Name" name="recipientName" required/>
           </div>
           <div>
-            <input type="text" id="Phone" class="input_box" placeholder="Phone" name="Phone" />
+            <input type="text" id="Phone" class="input_box" placeholder="Phone" name="Phone" required/>
           </div>
           <div>
-            <input type="text" id="Address" class="input_box" placeholder="Address" name="recipient_address" />
+            <input type="text" id="Address" class="input_box" placeholder="Address" name="recipient_address" required/>
           </div>
           <div>
-            <input type="text" id="postalcode" class="input_box" placeholder="Postal Code" name="postalCode" />
+            <input type="text" id="postalcode" class="input_box" placeholder="Postal Code" name="postalCode" required/>
           </div>
-          <button type="submit" class="btn_submit">Ready to Ship</button>
+          <button type="submit" class="btn_submit" id = "submitButton" disabled>Ready to Ship</button>
           <!-- <a href="./shipping.php" class="btn_submit" form="shippingForm">Ready Ship</a> -->
         </form>
       </div>
@@ -124,7 +127,6 @@ if (isset($bookArray['bookName'])) {
                 <?php
                 echo 'Total Cost $' . $sumBooks . '<span id="basketTotal"></span>'
                   ?>
-
               </td>
             </tr>
           </tbody>
@@ -133,7 +135,78 @@ if (isset($bookArray['bookName'])) {
     </div>
   </div>
   </div>
+
   <script>
+        //Define variables
+        var emailNode = document.getElementById('email');
+        //nameNode.addEventListener("change", checkName);
+        emailNode.addEventListener("keyup", validateForm);
+
+        var countryNode = document.getElementById('country');
+        //pwNode.addEventListener("change", validateForm);
+        countryNode.addEventListener("keyup", validateForm);
+
+        var nameNode = document.getElementById('Name');
+        //pwNode.addEventListener("change", validateForm);
+        nameNode.addEventListener("keyup", validateForm);
+
+        var phoneNode = document.getElementById('Phone');
+        //pwNode.addEventListener("change", validateForm);
+        phoneNode.addEventListener("keyup", validateForm);
+
+        var addressNode = document.getElementById('Address');
+        //pwNode.addEventListener("change", validateForm);
+        addressNode.addEventListener("keyup", validateForm);
+
+        var postalcodeNode = document.getElementById('postalcode');
+        //pwNode.addEventListener("change", validateForm);
+        postalcodeNode.addEventListener("keyup", validateForm);
+        //name phone address postalcode
+
+        var submitButton = document.getElementById("submitButton");
+        var errorOverall = document.getElementById('errorOverall');
+        var errorUser = document.getElementById("errorUser");
+        //Functions
+        function validateForm() {
+            errorOverall.style.visibility = 'hidden';
+
+            if (checkEmail()) {
+                submitButton.removeAttribute("disabled");
+                alert("correct");
+                return true;
+
+            } else {
+                submitButton.setAttribute("disabled", "true");
+                alert("wrong");
+                return false;
+            }
+        }
+
+        function checkEmail(event) {
+            errorOverall.style.visibility = 'hidden';
+
+            var input = emailNode.value;
+
+            var regexp = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            var pos = regexp.test(input);
+            alert(pos);
+
+            if (input == "") {
+                return false;
+
+            } else if (!pos) {
+                errorUser.style.visibility = "visible";
+                emailNode.classList.add("error-border");
+                return false;
+
+            } else {
+                errorUser.style.visibility = "hidden";
+                emailNode.classList.remove("error-border");
+                return true;
+            }
+        }
+
+
     <?php
     include '../PHP_Function/db_connection.php';
 
@@ -224,7 +297,7 @@ if (isset($bookArray['bookName'])) {
       echo "Form submission error.";
     }
     ?>
-  </script>
+
 
 </body>
 

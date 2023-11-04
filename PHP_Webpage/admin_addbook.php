@@ -55,8 +55,8 @@
                         echo '<td>' . $row['bookName'] . '</td>';
                         echo '<td>' . $row['stock'] . '</td>';
                         echo '<td>' .'$'. $row['price'] . '</td>';
-                        echo '<td><a href="add_modal.html"><i class="fa-solid fa-pen"></td>';
-                        echo '<td><a href="delete.html"><i class="fa-solid fa-trash"></td>';
+                        echo "<td><a href='edit_modal.php?bookId={$row['bookId']}'><i class='fa-solid fa-pen'></td>";
+                        echo "<td><a href='delete.php?bookId={$row['bookId']}'><i class='fa-solid fa-trash'></td>";
                         echo '</tr>';
                     }
                     ?>

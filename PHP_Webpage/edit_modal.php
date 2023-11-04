@@ -1,25 +1,41 @@
 <?php
 session_start();
-
-// if (!isset($_SESSION["name"])){
-//     echo 'Direct access not permitted. Please <a href="index.php">log in</a>.';
-//     die();
-// }
-
-// if (isset($_SESSION['name'])) {
-//   $userName = $_SESSION['name'];
-//   // print_r("The name from the session is: " . $userName);
+include '../PHP_Function/db_connection.php';
+if (isset($_GET['bookId'])) {
+    $bookId = $_GET['bookId'];
+    $sql = $conn->prepare("SELECT * FROM books WHERE bookId = ?");
+    $sql->bind_param("i", $bookId);
+    $currentbookId = $bookId;
+}
+// setcookie("currBookId",$currentbookId, time() + 3600,"/");
+// if (isset($_COOKIE['currBookId'])) {
+//     $currentbookId = $_COOKIE['currBookId'];
+//     echo "Value of 'currBookId': " . $currentbookId;
 // } else {
-//     print("The 'name' key is not set in the session.");
+//     echo "Cookie 'myCookie' is not set.";
 // }
+include '../PHP_Function/db_connection.php';
+    $sql = $conn->prepare("SELECT * FROM books where bookId = ?;");
+    $sql->bind_param("i", $currentbookId);
+    $sql->execute(); // Execute the prepared statement      
+    $result = $sql->get_result();
+    $result = $result->fetch_assoc();
+    
+    // echo '<script type="text/javascript">
+    // setTimeout(function() {
+    //     location.reload();
+    // }, 100); // Reload the page after 5 seconds
+    // </script>';
 ?>
 <script type="text/javascript">
     function showPopup() {
         // Display a pop-up message
-        alert("Database has been updated, please go back to admin home page to see the changes.");
+        alert("Database has been updated, please refresh page to see changes.");
     }
 </script>
-
+<!-- <script type="text/javascript">
+    window.location.reload();
+</script>' -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,6 +49,7 @@ session_start();
 
 
 <body>
+    
   <div
   class="modal fade"
   id="addBookModal"
@@ -44,7 +61,7 @@ session_start();
     <div class="modal-content">
       <div class="modal-body text-start">
         <div class="container">
-            <form class="addbook_form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" id="addbook_form">
+            <form class="editbook_form" action="<?php echo $_SERVER['PHP_SELF']."?bookId=".$currentbookId; ?>" method="POST" id="editbook_form">
                 <div class="custom_row">
                     <div class="column_6">
                     <div class="avatar-upload">
@@ -54,14 +71,15 @@ session_start();
                             id="imageUpload"
                             accept=".png, .jpg, .jpeg"
                             name = "img"
+                            value= "<?php echo $result['img'];?>"
                         />
                         <label for="imageUpload">Change Image</label>
                         </div>
-                        <div class="avatar-preview">
+                        <div class="avatar-preview" style = "height: 85vh; max-width: 100%; max-height: 100%;">
                         <div
                             id="img"
                             style="
-                            background-image: url(https://placehold.co/500x500);
+                            background-image: url(<?php echo $result['img'];?>);
                             "
                         ></div>
                         </div>
@@ -76,13 +94,15 @@ session_start();
                                 class="input_box"
                                 id="bookName"
                                 name = "bookName"
+                                placeholder=""
+                                input value ="<?php echo $result['bookName'];?>"
                             /> 
                         </div>
                         <div class="form_group_6">
 
                             <div class="form_group"> 
                             <label for="price" class="form-label">Price</label>
-                            <input type="text" class="input_box" id="price" name = "price"placeholder=""style = "width:70px; margin:auto;"> 
+                            <input type="text" class="input_box" id="price" name = "price" placeholder=""style = "width:70px; margin:auto;" input value ="<?php echo $result['price'];?>"/> 
                             </div>
 
                             <div class="form_group"> 
@@ -98,21 +118,22 @@ session_start();
                                 $sql = "SELECT catId FROM categories";
                                 
                                 // Execute the query
-                                $result = $conn->query($sql);
-                                $bookCategories = $result;
+                                $secondresult = $conn->query($sql);
+                                $bookCategories = $secondresult;
                                 // Check if the query was successful
-                                if ($result) {
+                                if ($secondresult) {
                                     // Fetch and display the 'bookId' values
-                                    while ($row = $result->fetch_assoc()) {
+                                    while ($row = $secondresult->fetch_assoc()) {
                                         echo "Cat ID: " . $row["catId"] . "<br>";
                                         echo "<option value =1>".$row["catId"]."</option>";
                                     }
                                 
                                     // Close the result set
-                                    $result->free_result();
+                                    $secondresult->free_result();
                                 } else {
                                     echo "Error: " . $conn->error;
                                 }
+                                
                                 ?>
                                 </select>
                             </div>
@@ -126,6 +147,7 @@ session_start();
                                 name = "stock"
                                 placeholder=""
                                 style = "width:70px; margin:auto;"
+                                input value ="<?php echo $result['stock'];?>"
                                 /> 
                             </div>
                         </div>
@@ -138,13 +160,13 @@ session_start();
                                 name = "info"
                                 rows="15"
                                 placeholder=""
-                            ></textarea> 
+                            ><?php echo $result['info'];?></textarea> 
                         </div>
                     </div>
 
 
                     <div class="add_btn_last">
-                    <button type = "submit" class = "btn_submit" onclick="showPopup()">Add New Book</button>
+                        <button type = 'submit' class = 'btn_submit' onclick="showPopup()">Update Book Details</button>
                     <!-- <a href="admin_addbook.php"
                         id="addBook"
                         class="btn_submit"
@@ -153,15 +175,14 @@ session_start();
                         type = "submit"
                         class = "btn_submit"
                     >
-                        Add New Book
-                    </a> -->
+                        Add New Book -->
                     <a href="admin_addbook.php"
-                    class="btn_submit"
-                    id="addBookCencel"
+                        class="btn_submit"
+                        id="addBookCancel"
                         data-bs-dismiss="modal"
                         aria-label="Close"
                     >
-                        Back
+                        Go back
                 </a>
                     </div>
                 </div>
@@ -190,7 +211,7 @@ session_start();
 
 
             $sql = "";
-            print_r($img .$bookName. $bookInfo. $price. $catId. $stock);
+            // print_r($img .$bookName. $bookInfo. $price. $catId. $stock);
 
             //Perform checking with SQL Db
             // $sql = $conn->prepare("SELECT * FROM orders WHERE userName=?;");
@@ -199,27 +220,31 @@ session_start();
         
             // $result = $sql->get_result(); // Get the result set from the executed statement                                 
 
-            //Insert to Orders
-            $sql = $conn->prepare("INSERT INTO books (bookName, info, img, catId, stock, price) VALUES (?, ?, ?, ?, ?, ?)");
-            $sql->bind_param("sssiid", $bookName, $bookInfo, $img, $catId, $stock, $price);
+            //UPDATE to books
+            $sql = $conn->prepare("UPDATE books SET bookName = ?, info = ?, img = ?, catId = ?, stock = ?, price = ? WHERE bookId = ?");
+            $sql->bind_param("sssiidi", $bookName, $bookInfo, $img, $catId, $stock, $price, $currentbookId);
             $sql->execute();
+            if ($sql->execute()) {
+                echo "Record updated successfully.";
+            } else {
+                echo "Error updating record: " . $sql->error;
+            }
 
-            
-            //Create Session                
-            $_SESSION['name'] = $userName;
-            
-
-            echo "window.location.href = 'add_modal.php'";
-
-
-
-            $sql->close();
-            $conn->close();
             echo "Form submission successful.";
+            // sleep(5);
         }else{
           echo "Form submission error.";
         }
+        // sleep(1);
+        echo '<script type="text/javascript">
+        location.reload();
+        </script>';
+
+
         ?>
+
+        
     </script>
+    
 </body>
 </html>
