@@ -67,14 +67,16 @@ if (!isset($_SESSION["adminName"])) {
                                 <div class="column_6">
                                     <div class="form_group">
                                         <label for="productsName" class="form-label">Book Title</label>
-                                        <input type="text" class="input_box" id="bookName" name="bookName" />
+                                        <input type="text" class="input_box" id="bookName" name="bookName" required/>
+                                        <span id="bookNameError" class="error" style="color: red;"></span>
                                     </div>
                                     <div class="form_group_6">
 
                                         <div class="form_group">
-                                            <label for="price" class="form-label">Price</label>
-                                            <input type="text" class="input_box" id="price" name="price" placeholder=""
-                                                style="width:70px; margin:auto;">
+                                            <label for="price" class="form-label">Price</label></br>
+                                            <input type="text" class="input_box" id="price" name="price" placeholder="SGD"
+                                                style="width:70px; margin:auto;" required>
+                                            <span id="priceError" class="error" style="color: red;"></span>
                                         </div>
 
                                         <div class="form_group">
@@ -113,7 +115,8 @@ if (!isset($_SESSION["adminName"])) {
                                         <div class="form_group">
                                             <label for="stocksLeft" class="form-label">Quantity</label>
                                             <input type="text" class="input_box" id="stock" name="stock" placeholder=""
-                                                style="width:70px; margin:auto;" />
+                                                style="width:70px; margin:auto;" required/>
+                                                <span id="stockError" class="error" style="color: red;"></span>
                                         </div>
                                     </div>
 
@@ -126,7 +129,7 @@ if (!isset($_SESSION["adminName"])) {
 
 
                     <div class="add_btn_last">
-                    <button type = "submit" class = "btn_submit" onclick="showPopup()">Add New Book</button>
+                    <button type = "submit" class = "btn_submit" id = "submitButton" onclick="showPopup()" disabled>Add New Book</button>
                     <!-- <a href="admin_addbook.php"
                         id="addBook"
                         class="btn_submit"
@@ -137,23 +140,12 @@ if (!isset($_SESSION["adminName"])) {
                     >
                         Add New Book
                     </a> -->
-<<<<<<< Updated upstream
                                     <a href="admin_addbook.php" class="btn_submit" id="addBookCencel"
                                         data-bs-dismiss="modal" aria-label="Close">
                                         Back
                                     </a>
                                 </div>
                             </div>
-=======
-                    <a href="admin_addbook.php"
-                    class="btn_submit"
-                    id="addBookCencel"
-                        data-bs-dismiss="modal"
-                        aria-label="Close"
-                    >
-                        Back
-                </a>
->>>>>>> Stashed changes
                     </div>
                     </form>
 
@@ -186,6 +178,74 @@ if (!isset($_SESSION["adminName"])) {
             }
         });
 
+        var checkPrice = false;
+        var checkBookName = false;
+        var checkStock = false;
+        //Regex
+        document.getElementById('bookName').addEventListener('input', function () {
+        const bookNameInput = this.value;
+        const bookNameRegex = /^[A-Za-z0-9\s'".!?-]+$/;
+
+        const bookNameError = document.getElementById('bookNameError');
+        const submitBtn = document.getElementById('submitButton');
+        
+        if (bookNameRegex.test(bookNameInput)) {
+            bookNameError.textContent = '';
+            submitBtn.removeAttribute('disabled');
+            checkBookName = true;
+        } else {
+            bookNameError.textContent = 'Invalid bookname';
+            submitBtn.setAttribute('disabled', true);
+            checkBookName = false;
+        }
+        });
+
+        document.getElementById('price').addEventListener('input', function () {
+        const priceInput = this.value;
+        const priceRegex = /^\$?\d+(?:\.\d{2})?$/;
+
+        const priceError = document.getElementById('priceError');
+        const submitBtn = document.getElementById('submitButton');
+        
+        if (priceRegex.test(priceInput)) {
+            priceError.textContent = '';
+            submitBtn.removeAttribute('disabled');
+            checkPrice = true;
+        } else {
+            priceError.textContent = 'Invalid price';
+            submitBtn.setAttribute('disabled', true);
+            checkPrice = false;
+        }
+        });
+
+        document.getElementById('stock').addEventListener('input', function () {
+        const stockInput = this.value;
+        const stockRegex = /^[1-9]\d*$/;
+
+        const stockError = document.getElementById('stockError');
+        const submitBtn = document.getElementById('submitButton');
+        
+        if (stockRegex.test(stockInput)) {
+            stockError.textContent = '';
+            submitBtn.removeAttribute('disabled');
+            checkStock = true;
+        } else {
+            stockError.textContent = 'Invalid stock number';
+            submitBtn.setAttribute('disabled', true);
+            checkStock = false;
+        }
+        });
+        document.addEventListener('keyup', function (event) {
+            const submitBtn = document.getElementById('submitButton');
+            
+            if (checkStock && checkBookName && checkPrice) {
+                submitBtn.removeAttribute('disabled');
+                console.log('Button enabled');
+            } else {
+                submitBtn.setAttribute('disabled', true);
+                console.log('Button disabled');
+            }
+        });
         <?php
         include '../PHP_Function/db_connection.php';
 
