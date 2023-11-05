@@ -10,9 +10,9 @@ if (!isset($_SESSION["name"])) {
 //Cookie
 if (isset($_COOKIE['cart'])) {
     // Calculate the number of items in the cart
-    echo $_COOKIE['cart'];
+    //echo $_COOKIE['cart'];
     $cartNum = count($_COOKIE['cart']);
-    var_dump($_COOKIE['cart']);
+    //var_dump($_COOKIE['cart']);
 } else {
     $cartNum = 0;
 }
