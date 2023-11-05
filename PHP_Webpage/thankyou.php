@@ -119,6 +119,6 @@ mail(
     $headers,
     '-ff32ee@localhost'
 );
-echo ("mail sent to : " . $to);
+//echo ("mail sent to : " . $to);
 ?>
 </html>
