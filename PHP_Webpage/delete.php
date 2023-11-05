@@ -1,4 +1,5 @@
 <?php
+<<<<<<< Updated upstream
 //Ensure user is logged in
 session_start();
 
@@ -7,6 +8,9 @@ if (!isset($_SESSION["adminName"])) {
     die();
 }
 
+=======
+session_start();
+>>>>>>> Stashed changes
 include '../PHP_Function/db_connection.php';
 if (isset($_GET['bookId'])) {
     $bookId = $_GET['bookId'];
@@ -88,6 +92,7 @@ include '../PHP_Function/db_connection.php';
           $sql->bind_param("i", $currentbookId);
           $sql->execute();
           if ($sql->execute()) {
+<<<<<<< Updated upstream
               //echo "Record updated successfully.";
               echo 'window.location.href = "admin_addbook.php";';
           } else {
@@ -101,6 +106,22 @@ include '../PHP_Function/db_connection.php';
       }
       // sleep(1);
    
+=======
+              echo "Record updated successfully.";
+          } else {
+              echo "Error updating record: " . $sql->error;
+          }
+
+          echo "Form submission successful.";
+          // sleep(5);
+      }else{
+        echo "Form submission error.";
+      }
+      // sleep(1);
+      echo '<script type="text/javascript">
+      location.reload();
+      </script>';
+>>>>>>> Stashed changes
       ?>
 
       

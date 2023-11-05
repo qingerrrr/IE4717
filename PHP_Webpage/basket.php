@@ -11,7 +11,11 @@ if (isset($_COOKIE['cart'])) {
   // Calculate the number of items in the cart
   $cartNum = count($_COOKIE['cart']);
   $BookData = $_COOKIE['cart'];
+<<<<<<< Updated upstream
   //print_r($BookData);
+=======
+  print_r($BookData);
+>>>>>>> Stashed changes
 } else {
   $cartNum = 0;
 }
@@ -38,8 +42,8 @@ if (isset($bookArray['bookName'])) {
   <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet'>
   <link href='https://fonts.googleapis.com/css?family=Luckiest Guy' rel='stylesheet'>
   <link rel="stylesheet" href="../CSS/font-awesome-4.7.0/css/font-awesome.min.css">
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" /> -->
-  <link rel="stylesheet" href="../CSS/global.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+  <link rel="stylesheet" href="../CSS/global.css">  
   <link rel="stylesheet" href="../CSS/style.css" />
   <link rel="stylesheet" href="../CSS/responsive.css" />
 </head>
@@ -87,17 +91,25 @@ if (isset($bookArray['bookName'])) {
           echo '<td>' . $book['bookName'] . '</td>';
           echo '<td style="text-align:center">' . $book['qty'] . '</td>';
           echo '<td style="text-align:center">' . '$' . $book['price'] * $book['qty'] . '</td>';
-          echo "<td><a href='delete_basket.php?bookId={$book['bookId']}'><i class='fa fa-trash fa-lg'></td>";
+          echo "<td><a href='delete_basket.php?bookId={$book['bookId']}'><i class='fa-solid fa-trash'></td>";
           echo '</tr>';
           $total = $total + ($book['price'] * $book['qty']);
         }
         ?>
+<<<<<<< Updated upstream
         <tr class="text-last border-top">
           <td colspan="3" class="text_total">
             Total Cost $
             <?php echo $total; ?><span id="basketTotal"></span>
           </td>
         </tr>
+=======
+            <tr class="text-last border-top">
+              <td colspan="3" class="text_total">
+                Total Cost $<?php echo $total; ?><span id="basketTotal"></span>
+              </td>
+            </tr>
+>>>>>>> Stashed changes
       </tbody>
     </table>
     <div class="basket_btn" style="position:relative;">

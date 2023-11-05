@@ -22,7 +22,10 @@ if (!isset($_SESSION["adminName"])) {
 <script type="text/javascript">
     function showPopup() {
         // Display a pop-up message
+<<<<<<< Updated upstream
         alert("Boook has been added.");
+        alert("Database has been updated, please go back to admin home page to see the changes.");
+>>>>>>> Stashed changes
     }
 </script>
 
@@ -122,9 +125,9 @@ if (!isset($_SESSION["adminName"])) {
                                 </div>
 
 
-                                <div class="add_btn_last">
-                                    <button type="submit" class="btn_submit" onclick="showPopup()">Add New Book</button>
-                                    <!-- <a href="admin_addbook.php"
+                    <div class="add_btn_last">
+                    <button type = "submit" class = "btn_submit" onclick="showPopup()">Add New Book</button>
+                    <!-- <a href="admin_addbook.php"
                         id="addBook"
                         class="btn_submit"
                         data-bs-dismiss="modal"
@@ -134,12 +137,23 @@ if (!isset($_SESSION["adminName"])) {
                     >
                         Add New Book
                     </a> -->
+<<<<<<< Updated upstream
                                     <a href="admin_addbook.php" class="btn_submit" id="addBookCencel"
                                         data-bs-dismiss="modal" aria-label="Close">
                                         Back
                                     </a>
                                 </div>
                             </div>
+=======
+                    <a href="admin_addbook.php"
+                    class="btn_submit"
+                    id="addBookCencel"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                    >
+                        Back
+                </a>
+>>>>>>> Stashed changes
                     </div>
                     </form>
 
