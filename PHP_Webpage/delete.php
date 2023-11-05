@@ -1,5 +1,4 @@
 <?php
-<<<<<<< Updated upstream
 //Ensure user is logged in
 session_start();
 
@@ -8,9 +7,6 @@ if (!isset($_SESSION["adminName"])) {
     die();
 }
 
-=======
-session_start();
->>>>>>> Stashed changes
 include '../PHP_Function/db_connection.php';
 if (isset($_GET['bookId'])) {
     $bookId = $_GET['bookId'];
@@ -28,6 +24,13 @@ include '../PHP_Function/db_connection.php';
     
 ?>
 
+<script type="text/javascript">
+    function showPopup() {
+        // Display a pop-up message
+        alert("Database has been updated, please press Back to see changes.");
+    }
+</script>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,6 +43,15 @@ include '../PHP_Function/db_connection.php';
 </head>
 
 <body>
+  <div class="navigationBarContainer">
+        <nav class="navBarContent">
+            <span></span>
+            <h1><a href="../PHP_Webpage/home.php">DUNOT</a></h1>
+            <span class="icons">
+            <a href="../PHP_Webpage/logout.php"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
+            </span>
+        </nav>
+    </div>
     <div class="data_main">
         <div class="container">
             <div class="delete_overlay"></div>
@@ -92,21 +104,6 @@ include '../PHP_Function/db_connection.php';
           $sql->bind_param("i", $currentbookId);
           $sql->execute();
           if ($sql->execute()) {
-<<<<<<< Updated upstream
-              //echo "Record updated successfully.";
-              echo 'window.location.href = "admin_addbook.php";';
-          } else {
-              //echo "Error updating record: " . $sql->error;
-          }
-
-          //echo "Form submission successful.";
-          // sleep(5);
-      }else{
-       // echo "Form submission error.";
-      }
-      // sleep(1);
-   
-=======
               echo "Record updated successfully.";
           } else {
               echo "Error updating record: " . $sql->error;
@@ -117,11 +114,11 @@ include '../PHP_Function/db_connection.php';
       }else{
         echo "Form submission error.";
       }
+      echo "window.location.href = 'admin_addbook.php';";
       // sleep(1);
       echo '<script type="text/javascript">
       location.reload();
       </script>';
->>>>>>> Stashed changes
       ?>
 
       

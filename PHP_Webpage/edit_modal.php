@@ -1,5 +1,4 @@
 <?php
-<<<<<<< Updated upstream
 //Ensure user is logged in
 session_start();
 
@@ -8,9 +7,6 @@ if (!isset($_SESSION["adminName"])) {
     die();
 }
 
-=======
-session_start();
->>>>>>> Stashed changes
 include '../PHP_Function/db_connection.php';
 if (isset($_GET['bookId'])) {
     $bookId = $_GET['bookId'];
@@ -26,19 +22,6 @@ if (isset($_GET['bookId'])) {
 //     echo "Cookie 'myCookie' is not set.";
 // }
 include '../PHP_Function/db_connection.php';
-<<<<<<< Updated upstream
-$sql = $conn->prepare("SELECT * FROM books where bookId = ?;");
-$sql->bind_param("i", $currentbookId);
-$sql->execute(); // Execute the prepared statement      
-$result = $sql->get_result();
-$result = $result->fetch_assoc();
-
-// echo '<script type="text/javascript">
-// setTimeout(function() {
-//     location.reload();
-// }, 100); // Reload the page after 5 seconds
-// </script>';
-=======
     $sql = $conn->prepare("SELECT * FROM books where bookId = ?;");
     $sql->bind_param("i", $currentbookId);
     $sql->execute(); // Execute the prepared statement      
@@ -50,16 +33,11 @@ $result = $result->fetch_assoc();
     //     location.reload();
     // }, 100); // Reload the page after 5 seconds
     // </script>';
->>>>>>> Stashed changes
 ?>
 <script type="text/javascript">
     function showPopup() {
         // Display a pop-up message
-<<<<<<< Updated upstream
-        alert("Database has been updated.");
-=======
         alert("Database has been updated, please refresh page to see changes.");
->>>>>>> Stashed changes
     }
 </script>
 <!-- <script type="text/javascript">
@@ -71,17 +49,22 @@ $result = $result->fetch_assoc();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unoguerta</title>
-<<<<<<< Updated upstream
-=======
     
->>>>>>> Stashed changes
     <link rel="stylesheet" href="../CSS/styleModal.css" />
     <link rel="stylesheet" href="../CSS/responsiveModal.css" />
 </head>
 
 
 <body>
-<<<<<<< Updated upstream
+    <div class="navigationBarContainer">
+        <nav class="navBarContent">
+            <span></span>
+            <h1><a href="../PHP_Webpage/home.php">DUNOT</a></h1>
+            <span class="icons">
+            <a href="../PHP_Webpage/logout.php"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
+            </span>
+        </nav>
+    </div>
     <div class="modal fade" id="addBookModal" tabindex="-1" aria-labelledby="addBookModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-fullscreen">
             <div class="modal-content">
@@ -110,7 +93,8 @@ $result = $result->fetch_assoc();
                                     <div class="form_group">
                                         <label for="productsName" class="form-label">Book Title</label>
                                         <input type="text" class="input_box" id="bookName" name="bookName"
-                                            placeholder="" input value="<?php echo $result['bookName']; ?>" />
+                                            placeholder="" input value="<?php echo $result['bookName']; ?>" required />
+                                        <span id="bookNameError" class="error" style="color: red;"></span>
                                     </div>
                                     <div class="form_group_6">
 
@@ -118,7 +102,8 @@ $result = $result->fetch_assoc();
                                             <label for="price" class="form-label">Price</label>
                                             <input type="text" class="input_box" id="price" name="price" placeholder=""
                                                 style="width:70px; margin:auto;" input
-                                                value="<?php echo $result['price']; ?>" />
+                                                value="<?php echo $result['price']; ?>" required />
+                                            <span id="priceError" class="error" style="color: red;"></span>
                                         </div>
 
                                         <div class="form_group">
@@ -165,7 +150,8 @@ $result = $result->fetch_assoc();
                                             <label for="stocksLeft" class="form-label">Quantity</label>
                                             <input type="text" class="input_box" id="stock" name="stock" placeholder=""
                                                 style="width:70px; margin:auto;" input
-                                                value="<?php echo $result['stock']; ?>" />
+                                                value="<?php echo $result['stock']; ?>" required/>
+                                            <span id="stockError" class="error" style="color: red;"></span>
                                         </div>
                                     </div>
 
@@ -178,139 +164,9 @@ $result = $result->fetch_assoc();
 
 
                                 <div class="add_btn_last">
-                                    <button type='submit' class='btn_submit' onclick="showPopup()">Update Book
+                                    <button type='submit' class='btn_submit' id = "submitButton" onclick="showPopup() disabled">Update Book
                                         Details</button>
-                                    <!-- <a href="admin_addbook.php"
-=======
-    
-  <div
-  class="modal fade"
-  id="addBookModal"
-  tabindex="-1"
-  aria-labelledby="addBookModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog modal-fullscreen">
-    <div class="modal-content">
-      <div class="modal-body text-start">
-        <div class="container">
-            <form class="editbook_form" action="<?php echo $_SERVER['PHP_SELF']."?bookId=".$currentbookId; ?>" method="POST" id="editbook_form">
-                <div class="custom_row">
-                    <div class="column_6">
-                    <div class="avatar-upload">
-                        <div class="avatar-edit">
-                        <input
-                            type="file"
-                            id="imageUpload"
-                            accept=".png, .jpg, .jpeg"
-                            name = "img"
-                            value= "<?php echo $result['img'];?>"
-                        />
-                        <label for="imageUpload">Change Image</label>
-                        </div>
-                        <div class="avatar-preview" style = "height: 85vh; max-width: 100%; max-height: 100%;">
-                        <div
-                            id="img"
-                            style="
-                            background-image: url(<?php echo $result['img'];?>);
-                            "
-                        ></div>
-                        </div>
-                    </div>
-                    </div>
 
-                    <div class="column_6">
-                        <div class="form_group"> 
-                            <label for="productsName" class="form-label">Book Title</label>
-                            <input
-                                type="text"
-                                class="input_box"
-                                id="bookName"
-                                name = "bookName"
-                                placeholder=""
-                                input value ="<?php echo $result['bookName'];?>"
-                            /> 
-                        </div>
-                        <div class="form_group_6">
-
-                            <div class="form_group"> 
-                            <label for="price" class="form-label">Price</label>
-                            <input type="text" class="input_box" id="price" name = "price" placeholder=""style = "width:70px; margin:auto;" input value ="<?php echo $result['price'];?>"/> 
-                            </div>
-
-                            <div class="form_group"> 
-                            <label for="price" class="form-label">Category</label>
-                            <!-- <input type="text" class="input_box" id="category" placeholder="">
-                            <label for="dog-names">Category</label>  -->
-                                <select name="catId" id="catId" style = "width:70px; margin:auto; text-align:center"> 
-
-                                <!-- get categories  -->
-                                <?php
-                                include '../PHP_Function/db_connection.php';
-
-                                $sql = "SELECT catId FROM categories";
-                                
-                                // Execute the query
-                                $secondresult = $conn->query($sql);
-                                $bookCategories = $secondresult;
-                                // Check if the query was successful
-                                if ($secondresult) {
-                                    // Fetch and display the 'bookId' values
-                                    while ($row = $secondresult->fetch_assoc()) {
-                                        echo "Cat ID: " . $row["catId"] . "<br>";
-                                        echo "<option value =1>".$row["catId"]."</option>";
-                                    }
-                                
-                                    // Close the result set
-                                    $secondresult->free_result();
-                                } else {
-                                    echo "Error: " . $conn->error;
-                                }
-                                
-                                ?>
-                                </select>
-                            </div>
-
-                            <div class="form_group"> 
-                                <label for="stocksLeft" class="form-label">Quantity</label>
-                                <input
-                                type="text"
-                                class="input_box"
-                                id="stock"
-                                name = "stock"
-                                placeholder=""
-                                style = "width:70px; margin:auto;"
-                                input value ="<?php echo $result['stock'];?>"
-                                /> 
-                            </div>
-                        </div>
-
-                        <div class="form_group"> 
-                            <label for="description" class="form-label">Book Description</label>
-                            <textarea
-                                class="input_box"
-                                id="info"
-                                name = "info"
-                                rows="15"
-                                placeholder=""
-                            ><?php echo $result['info'];?></textarea> 
-                        </div>
-                    </div>
-
-
-                    <div class="add_btn_last">
-                        <button type = 'submit' class = 'btn_submit' onclick="showPopup()">Update Book Details</button>
-                    <!-- <a href="admin_addbook.php"
->>>>>>> Stashed changes
-                        id="addBook"
-                        class="btn_submit"
-                        data-bs-dismiss="modal"
-                        aria-label="Close"
-                        type = "submit"
-                        class = "btn_submit"
-                    >
-                        Add New Book -->
-<<<<<<< Updated upstream
                                     <a href="admin_addbook.php" class="btn_submit" id="addBookCancel"
                                         data-bs-dismiss="modal" aria-label="Close">
                                         Go back
@@ -349,6 +205,74 @@ $result = $result->fetch_assoc();
             }
         });
 
+        var checkPrice = true;
+        var checkBookName = true;
+        var checkStock = true;
+        //Regex
+        document.getElementById('bookName').addEventListener('input', function () {
+        const bookNameInput = this.value;
+        const bookNameRegex = /^[A-Za-z0-9\s'".!?-]+$/;
+
+        const bookNameError = document.getElementById('bookNameError');
+        const submitBtn = document.getElementById('submitButton');
+        
+        if (bookNameRegex.test(bookNameInput)) {
+            bookNameError.textContent = '';
+            submitBtn.removeAttribute('disabled');
+            checkBookName = true;
+        } else {
+            bookNameError.textContent = 'Invalid bookname';
+            submitBtn.setAttribute('disabled', true);
+            checkBookName = false;
+        }
+        });
+
+        document.getElementById('price').addEventListener('input', function () {
+        const priceInput = this.value;
+        const priceRegex = /^\$?\d+(?:\.\d{2})?$/;
+
+        const priceError = document.getElementById('priceError');
+        const submitBtn = document.getElementById('submitButton');
+        
+        if (priceRegex.test(priceInput)) {
+            priceError.textContent = '';
+            submitBtn.removeAttribute('disabled');
+            checkPrice = true;
+        } else {
+            priceError.textContent = 'Invalid price';
+            submitBtn.setAttribute('disabled', true);
+            checkPrice = false;
+        }
+        });
+
+        document.getElementById('stock').addEventListener('input', function () {
+        const stockInput = this.value;
+        const stockRegex = /^[1-9]\d*$/;
+
+        const stockError = document.getElementById('stockError');
+        const submitBtn = document.getElementById('submitButton');
+        
+        if (stockRegex.test(stockInput)) {
+            stockError.textContent = '';
+            submitBtn.removeAttribute('disabled');
+            checkStock = true;
+        } else {
+            stockError.textContent = 'Invalid stock number';
+            submitBtn.setAttribute('disabled', true);
+            checkStock = false;
+        }
+        });
+        document.addEventListener('keyup', function (event) {
+            const submitBtn = document.getElementById('submitButton');
+            
+            if (checkStock && checkBookName && checkPrice) {
+                submitBtn.removeAttribute('disabled');
+                console.log('Button enabled');
+            } else {
+                submitBtn.setAttribute('disabled', true);
+                console.log('Button disabled');
+            }
+        });
         <?php
         include '../PHP_Function/db_connection.php';
 
@@ -361,111 +285,41 @@ $result = $result->fetch_assoc();
                 $img = "../IMG/Books/" . $img;
             }
 
-=======
-                    <a href="admin_addbook.php"
-                        class="btn_submit"
-                        id="addBookCancel"
-                        data-bs-dismiss="modal"
-                        aria-label="Close"
-                    >
-                        Go back
-                </a>
-                    </div>
-                </div>
-                </div>
-            </form>
-
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<script>
-      <?php
-        include '../PHP_Function/db_connection.php';
-
-        // // Check if the form is submitted
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $img = $_POST['img'];
-            $img = "../IMG/Books/".$img;
->>>>>>> Stashed changes
             $bookName = $_POST['bookName'];
             $bookInfo = $_POST['info'];
             $price = $_POST['price'];
             $catId = $_POST['catId'];
             $stock = $_POST['stock'];
 
-<<<<<<< Updated upstream
             $sql = "";
             // print_r($img .$bookName. $bookInfo. $price. $catId. $stock);
         
-=======
-
-            $sql = "";
-            // print_r($img .$bookName. $bookInfo. $price. $catId. $stock);
-
->>>>>>> Stashed changes
             //Perform checking with SQL Db
             // $sql = $conn->prepare("SELECT * FROM orders WHERE userName=?;");
             // $sql->bind_param("s", $userName);
             // $sql->execute(); // Execute the prepared statement      
         
             // $result = $sql->get_result(); // Get the result set from the executed statement                                 
-<<<<<<< Updated upstream
-        
-=======
-
->>>>>>> Stashed changes
             //UPDATE to books
             $sql = $conn->prepare("UPDATE books SET bookName = ?, info = ?, img = ?, catId = ?, stock = ?, price = ? WHERE bookId = ?");
             $sql->bind_param("sssiidi", $bookName, $bookInfo, $img, $catId, $stock, $price, $currentbookId);
             $sql->execute();
-            if ($sql->execute()) {
-<<<<<<< Updated upstream
-                //echo "Record updated successfully.";
-                echo 'window.location.href = "admin_addbook.php";';
-            } else {
-                //echo "Error updating record: " . $sql->error;
-            }
+            echo "window.location.href = 'admin_addbook.php';";
 
-            //echo "Form submission successful.";
-            // sleep(5);
-        } else {
-            // echo "Form submission error.";
+            $sql->close();
+            $conn->close();
+            // if ($sql->execute()) {
+            //     echo "Record updated successfully.";
+            // } else {
+            //     echo "Error updating record: " . $sql->error;
+            // }
         }
-        // sleep(1);
-        
-=======
-                echo "Record updated successfully.";
-            } else {
-                echo "Error updating record: " . $sql->error;
-            }
-
-            echo "Form submission successful.";
-            // sleep(5);
-        }else{
-          echo "Form submission error.";
-        }
-        // sleep(1);
-        echo '<script type="text/javascript">
-        location.reload();
-        </script>';
->>>>>>> Stashed changes
 
 
         ?>
 
-<<<<<<< Updated upstream
-
-    </script>
-
-</body>
-
-=======
         
     </script>
     
 </body>
->>>>>>> Stashed changes
 </html>

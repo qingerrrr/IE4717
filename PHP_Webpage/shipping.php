@@ -67,10 +67,11 @@ if (isset($bookArray['bookName'])) {
           }
           ?>
           <a href="../PHP_Webpage/basket.php"><i class="fa fa-shopping-bag fa-2x" aria-hidden="true"></i></a>
-    </div>
+    
     <a href="../PHP_Webpage/logout.php"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
     </span>
     </nav>
+    </div>
   </div>
 
   <div class="container">
@@ -81,30 +82,30 @@ if (isset($bookArray['bookName'])) {
           <!-- <p class="errormsg" id="errorOverall">Invalid inputs, please check again.</p>
          -->
           <div class="email_group">
-            <input type="email" id="email" class="input_box" placeholder="Email" , name="email" required />
-            <span id="emailError" class="error"></span>
+            <input type="text" id="email" class="input_box" placeholder="Email" , name="email" required />
+            <span id="emailError" class="error" style="color: red;"></span>
           </div>
           <!-- <p class="errormsg" id="errorUser">Only letters (a-z, A-Z), numbers, underscores
                         and full stops are allowed</p> -->
           <h5>Ship To</h5>
           <div>
             <input type="text" id="country" class="input_box" placeholder="Country/Region" name="country" required />
-            <span id="countryError" class="error"></span>
+            <span id="countryError" class="error" style="color: red;"></span>
           </div>
           <div>
             <input type="text" id="Name" class="input_box" placeholder="Name" name="recipientName" required />
-            <span id="nameError" class="error"></span>
+            <span id="nameError" class="error" style="color: red;"></span>
           </div>
           <div>
             <input type="text" id="Phone" class="input_box" placeholder="Phone" name="Phone" required />
-            <span id="phoneError" class="error"></span>
+            <span id="phoneError" class="error" style="color: red;"></span>
           </div>
           <div>
             <input type="text" id="Address" class="input_box" placeholder="Address" name="recipient_address" required />
           </div>
           <div>
             <input type="text" id="postalcode" class="input_box" placeholder="Postal Code" name="postalCode" required />
-            <span id="pcError" class="error"></span>
+            <span id="pcError" class="error" style="color: red;"></span>
           </div>
           <button type="submit" class="btn_submit" id="submitButton" disabled>Ready to Ship</button>
         </form>
@@ -140,19 +141,28 @@ if (isset($bookArray['bookName'])) {
   </div>
 
   <script>
+    var checkEmail = false;
+    var checkCountry = false;
+    var checkName = false;
+    var checkPhone = false;
+    var checkPC = false;
+
     document.getElementById('email').addEventListener('input', function () {
       const emailInput = this.value;
-      const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+      const emailRegex = /^(?:[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}|@localhost)$/;
 
       const emailError = document.getElementById('emailError');
       const submitBtn = document.getElementById('submitButton');
+      
 
       if (emailRegex.test(emailInput)) {
         emailError.textContent = '';
         submitBtn.removeAttribute('disabled');
+        checkEmail = true;
       } else {
         emailError.textContent = 'Invalid email format';
         submitBtn.setAttribute('disabled', true);
+        checkEmail = false;
       }
     });
 
@@ -162,13 +172,15 @@ if (isset($bookArray['bookName'])) {
 
       const countryError = document.getElementById('countryError');
       const submitBtn = document.getElementById('submitButton');
-
+      
       if (countryRegex.test(countryInput)) {
         countryError.textContent = '';
         submitBtn.removeAttribute('disabled');
+        checkCountry = true;
       } else {
         countryError.textContent = 'Invalid country';
         submitBtn.setAttribute('disabled', true);
+        checkCountry = false;
       }
     });
 
@@ -178,13 +190,16 @@ if (isset($bookArray['bookName'])) {
 
       const nameError = document.getElementById('nameError');
       const submitBtn = document.getElementById('submitButton');
+      
 
       if (nameRegex.test(nameInput)) {
         nameError.textContent = '';
         submitBtn.removeAttribute('disabled');
+        checkName = true;
       } else {
         nameError.textContent = 'Invalid name';
         submitBtn.setAttribute('disabled', true);
+        checkName = false;
       }
     });
 
@@ -194,13 +209,15 @@ if (isset($bookArray['bookName'])) {
 
       const phoneError = document.getElementById('phoneError');
       const submitBtn = document.getElementById('submitButton');
-
+      
       if (phoneRegex.test(phoneInput)) {
         phoneError.textContent = '';
         submitBtn.removeAttribute('disabled');
+        checkPhone = true;
       } else {
         phoneError.textContent = 'Invalid phone number';
         submitBtn.setAttribute('disabled', true);
+        checkName = false;
       }
     });
 
@@ -210,15 +227,29 @@ if (isset($bookArray['bookName'])) {
 
       const pcError = document.getElementById('pcError');
       const submitBtn = document.getElementById('submitButton');
-
+      
       if (pcRegex.test(pcInput)) {
         pcError.textContent = '';
         submitBtn.removeAttribute('disabled');
+        checkPC = true;
       } else {
         pcError.textContent = 'Invalid postal code';
         submitBtn.setAttribute('disabled', true);
+        checkPC = false;
       }
     });
+    document.addEventListener('keyup', function (event) {
+    const submitBtn = document.getElementById('submitButton');
+    
+    if (checkEmail && checkCountry && checkName && checkPhone && checkPC) {
+        submitBtn.removeAttribute('disabled');
+        console.log('Button enabled');
+    } else {
+        submitBtn.setAttribute('disabled', true);
+        console.log('Button disabled');
+    }
+});
+
 
     <?php
     include '../PHP_Function/db_connection.php';
