@@ -330,7 +330,7 @@ table {
 }
 
 .btn_submit {
-  display: inline-block;
+  /* display: inline-block;
   font-weight: 400;
   line-height: 1.5;
   color: #212529;
@@ -352,11 +352,24 @@ table {
   background-color: #6c757d;
   border-color: #6c757d;
   margin-top: 30px;
-  transition: 0.3s;
+  transition: 0.3s; */
+  width: 550px;
+  height: 62px;
+  border-radius: 5px;
+  border: 3px solid #ffcf00;
+  background: rgba(0, 0, 0, 0);
+  color: #1c305c;
+  box-shadow: inset 0 0 0 0 #ffcf00;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 900;
+  cursor: pointer;
+  transition: ease-out 0.3s;
 }
 
 .btn_submit:hover {
-  opacity: 0.83;
+  box-shadow: inset 550px 0 0 0 #ffcf00;
+  color: white;
 }
 
 .btn_submit_2 {

@@ -150,7 +150,7 @@ if (isset($bookArray['bookName'])) {
 
     document.getElementById('email').addEventListener('input', function () {
       const emailInput = this.value;
-      const emailRegex = /^(?:[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}|@localhost)$/;
+      const emailRegex = /^(?:[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]{2,4}|[a-zA-Z0-9._-]+@localhost)$/;
 
       const emailError = document.getElementById('emailError');
       const submitBtn = document.getElementById('submitButton');
@@ -161,7 +161,7 @@ if (isset($bookArray['bookName'])) {
         submitBtn.removeAttribute('disabled');
         checkEmail = true;
       } else {
-        emailError.textContent = 'Invalid email format';
+        emailError.textContent = 'Invalid email format, please follow the format : youremail@mailcompany.com, yourname@mail.co';
         submitBtn.setAttribute('disabled', true);
         checkEmail = false;
       }
@@ -169,7 +169,7 @@ if (isset($bookArray['bookName'])) {
 
     document.getElementById('country').addEventListener('input', function () {
       const countryInput = this.value;
-      const countryRegex = /^[A-Za-z]+$/;
+      const countryRegex = /^[A-Za-z ]+$/;
 
       const countryError = document.getElementById('countryError');
       const submitBtn = document.getElementById('submitButton');
@@ -179,7 +179,7 @@ if (isset($bookArray['bookName'])) {
         submitBtn.removeAttribute('disabled');
         checkCountry = true;
       } else {
-        countryError.textContent = 'Invalid country';
+        countryError.textContent = 'Invalid country, can only contain letters and spaces';
         submitBtn.setAttribute('disabled', true);
         checkCountry = false;
       }
@@ -198,7 +198,7 @@ if (isset($bookArray['bookName'])) {
         submitBtn.removeAttribute('disabled');
         checkName = true;
       } else {
-        nameError.textContent = 'Invalid name';
+        nameError.textContent = 'Invalid name, can only contain letters and spaces';
         submitBtn.setAttribute('disabled', true);
         checkName = false;
       }
@@ -216,9 +216,9 @@ if (isset($bookArray['bookName'])) {
         submitBtn.removeAttribute('disabled');
         checkPhone = true;
       } else {
-        phoneError.textContent = 'Invalid phone number';
+        phoneError.textContent = 'Invalid phone number, only allow 8 digits and numbers only';
         submitBtn.setAttribute('disabled', true);
-        checkName = false;
+        checkPhone = false;
       }
     });
 
@@ -234,15 +234,20 @@ if (isset($bookArray['bookName'])) {
         submitBtn.removeAttribute('disabled');
         checkPC = true;
       } else {
-        pcError.textContent = 'Invalid postal code';
+        pcError.textContent = 'Invalid postal code, only allow 6 digits and numbers only';
         submitBtn.setAttribute('disabled', true);
         checkPC = false;
       }
     });
     document.addEventListener('keyup', function (event) {
       const submitBtn = document.getElementById('submitButton');
+<<<<<<< HEAD
 
       if (checkEmail && checkCountry && checkName && checkPhone && checkPC) {
+=======
+      const total = <?php echo $sumBooks; ?>;
+      if (checkEmail && checkCountry && checkName && checkPhone && checkPC && total !== 0) {
+>>>>>>> 8b3fd01ea99b1e2f77ab168f1c23cdd300fe4911
         submitBtn.removeAttribute('disabled');
         console.log('Button enabled');
       } else {

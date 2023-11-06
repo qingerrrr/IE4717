@@ -224,7 +224,7 @@ if (!isset($_SESSION["adminName"])) {
             submitBtn.removeAttribute('disabled');
             checkPrice = true;
         } else {
-            priceError.textContent = 'Invalid price';
+            priceError.textContent = 'Invalid price, must be in this format: XX.XX or XX and positive numbers only';
             submitBtn.setAttribute('disabled', true);
             checkPrice = false;
         }
@@ -242,7 +242,7 @@ if (!isset($_SESSION["adminName"])) {
             submitBtn.removeAttribute('disabled');
             checkStock = true;
         } else {
-            stockError.textContent = 'Invalid stock number';
+            stockError.textContent = 'Invalid stock number, must be positive whole numbers only';
             submitBtn.setAttribute('disabled', true);
             checkStock = false;
         }
