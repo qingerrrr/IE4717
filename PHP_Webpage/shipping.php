@@ -59,6 +59,7 @@ if (isset($bookArray['bookName'])) {
         <h1><a href="../PHP_Webpage/home.php">DUNOT</a></h1>
         <span class="icons">
           <a href="../PHP_Webpage/catalogue.php"><i class="fa fa-book fa-2x" aria-hidden="true"></i></a>
+
           <?php
           if ($cartNum > 0) {
             echo "<div class='shoppingBag' data-count='" . $cartNum . "'>";
@@ -66,12 +67,12 @@ if (isset($bookArray['bookName'])) {
             echo "<div class='shoppingBag'>";
           }
           ?>
+          <!-- <div class="shoppingBag"> -->
           <a href="../PHP_Webpage/basket.php"><i class="fa fa-shopping-bag fa-2x" aria-hidden="true"></i></a>
-    
+    </div>
     <a href="../PHP_Webpage/logout.php"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
     </span>
     </nav>
-    </div>
   </div>
 
   <div class="container">
@@ -107,7 +108,7 @@ if (isset($bookArray['bookName'])) {
             <input type="text" id="postalcode" class="input_box" placeholder="Postal Code" name="postalCode" required />
             <span id="pcError" class="error" style="color: red;"></span>
           </div>
-          <button type="submit" class="btn_submit" id="submitButton" disabled>Ready to Ship</button>
+          <button type="submit" class="btn_submit_2" id="submitButton" disabled>Ready to Ship</button>
         </form>
       </div>
       <div class="column_6">
@@ -153,7 +154,7 @@ if (isset($bookArray['bookName'])) {
 
       const emailError = document.getElementById('emailError');
       const submitBtn = document.getElementById('submitButton');
-      
+
 
       if (emailRegex.test(emailInput)) {
         emailError.textContent = '';
@@ -172,7 +173,7 @@ if (isset($bookArray['bookName'])) {
 
       const countryError = document.getElementById('countryError');
       const submitBtn = document.getElementById('submitButton');
-      
+
       if (countryRegex.test(countryInput)) {
         countryError.textContent = '';
         submitBtn.removeAttribute('disabled');
@@ -190,7 +191,7 @@ if (isset($bookArray['bookName'])) {
 
       const nameError = document.getElementById('nameError');
       const submitBtn = document.getElementById('submitButton');
-      
+
 
       if (nameRegex.test(nameInput)) {
         nameError.textContent = '';
@@ -209,7 +210,7 @@ if (isset($bookArray['bookName'])) {
 
       const phoneError = document.getElementById('phoneError');
       const submitBtn = document.getElementById('submitButton');
-      
+
       if (phoneRegex.test(phoneInput)) {
         phoneError.textContent = '';
         submitBtn.removeAttribute('disabled');
@@ -227,7 +228,7 @@ if (isset($bookArray['bookName'])) {
 
       const pcError = document.getElementById('pcError');
       const submitBtn = document.getElementById('submitButton');
-      
+
       if (pcRegex.test(pcInput)) {
         pcError.textContent = '';
         submitBtn.removeAttribute('disabled');
@@ -239,16 +240,16 @@ if (isset($bookArray['bookName'])) {
       }
     });
     document.addEventListener('keyup', function (event) {
-    const submitBtn = document.getElementById('submitButton');
-    
-    if (checkEmail && checkCountry && checkName && checkPhone && checkPC) {
+      const submitBtn = document.getElementById('submitButton');
+
+      if (checkEmail && checkCountry && checkName && checkPhone && checkPC) {
         submitBtn.removeAttribute('disabled');
         console.log('Button enabled');
-    } else {
+      } else {
         submitBtn.setAttribute('disabled', true);
         console.log('Button disabled');
-    }
-});
+      }
+    });
 
 
     <?php
@@ -320,7 +321,7 @@ if (isset($bookArray['bookName'])) {
       }
       //Create Session                
       //$_SESSION['name'] = $userName;            
-     
+    
 
       // exit;   
       $sql->close();
