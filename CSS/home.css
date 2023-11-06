@@ -105,7 +105,7 @@ h2 {
 }
 
 .section3Content button:hover {
-    color: white;
+    color: #1C305C;
 }
 
 /*Section 4*/
@@ -152,18 +152,3 @@ p {
     font-weight: 500;
     color: black;
 }
-
-/*Media Query---------------------------------------------------*/
-/* Large devices (laptops/desktops, 992px and up) */
-/* @media only screen and (min-width: 992px ) and (max-device-width: 1024px){
-  
-     .bookImg{
-        width: 60%;
-        height: auto;
-    } 
-
-    .alltimefav a{
-        flex: 0 0 200px;
-    }
-
-} */
