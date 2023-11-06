@@ -108,7 +108,7 @@ if (isset($bookArray['bookName'])) {
             <input type="text" id="postalcode" class="input_box" placeholder="Postal Code" name="postalCode" required />
             <span id="pcError" class="error" style="color: red;"></span>
           </div>
-          <button type="submit" class="btn_submit" id="submitButton" disabled>Ready to Ship</button>
+          <button type="submit" class="btn_submit_2" id="submitButton" disabled>Ready to Ship</button>
         </form>
       </div>
       <div class="column_6">
