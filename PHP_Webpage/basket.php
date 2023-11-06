@@ -103,7 +103,7 @@ if (isset($bookArray['bookName'])) {
         </tr>
       </tbody>
     </table>
-    <div class="basket_btn" style="position:relative;">
+    <div class="basket_btn" style="position:relative;top:80px;">
       <a href="./shipping.php" class="btn_submit">Check Out</a>
     </div>
   </div>
