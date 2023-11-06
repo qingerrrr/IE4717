@@ -83,7 +83,6 @@ $book_count = $result->num_rows;
             </table>  
 
           </div>
-
         </div>
         <div class="text_button">
               <!-- Button trigger add book modal -->
