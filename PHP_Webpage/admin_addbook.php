@@ -13,20 +13,6 @@ $sql = $conn->prepare("SELECT * FROM books;");
 $sql->execute(); // Execute the prepared statement      
 $result = $sql->get_result();
 $book_count = $result->num_rows;
-// echo "Number of rows in the result set: " . $book_count . "<br>";
-// if ($result){
-//     // Fetch and display the data
-//     while ($row = $result->fetch_assoc()) {
-//         echo "Book Title: " . $row["bookName"] . "<br>";
-//         echo "Stock: " . $row["stock"] . "<br>";
-//         echo "<br>";
-//     }
-//     $result->close();
-// } else {
-//     echo "Error: " . $conn->error;
-// }
-// $result = $sql->get_result();
-
 ?>
 
 <!DOCTYPE html>
@@ -35,6 +21,7 @@ $book_count = $result->num_rows;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Unoguerta</title>
+
     <!-- styles -->  
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
     <link rel="stylesheet" href="../CSS/style.css" />
@@ -46,12 +33,13 @@ $book_count = $result->num_rows;
   <div class="navigationBarContainer">
       <nav class="navBarContent">
         <span></span>
-        <h1><a href="../PHP_Webpage/home.php">DUNOT</a></h1>
+        <h1><a href="../PHP_Webpage/admin_addbook.php">DUNOT</a></h1>
         <span class="icons">
           <a href="../PHP_Webpage/logout.php"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
         </span>
       </nav>
   </div>
+
     <!-- booking list start -->
     <div class="booking-list my-5">
       <div class="container"style="position:relative; top:80px;">
