@@ -50,11 +50,11 @@ if (isset($_POST['addToCart'])) {
 
     // Set a cookie to store the serialized product data
     setcookie("cart[$bookId]", $serializedProduct, time() + 3600, "/"); //cookie staying for 1 hour
-    setcookie("book_data", $serializedProduct, time() + 3600, "/"); //cookie staying for 1 hour    
+    setcookie("book_data", $serializedProduct, time() + 3600, "/");
 
     //header("Location: ../PHP_Webpage/add_to_cart.php");
     header("Location: ../PHP_Webpage/description.php?bookId=" . $bookId);
-    exit; // Make sure to exit to prevent further script execution
+    exit;
 
     //Count the number of itmes in the cart array    
     // $itemCount = count($_COOKIE['cart']);

@@ -89,7 +89,7 @@ $conn->close();
                 <p>Should you have any questions or concerns, please don't hesitate to reach out. We look forward to
                     see you again soon!</p>
 
-                <button class="button indexBtn" onclick="">Back to Home</button>
+                <button class="button indexBtn" onclick="backtohome()">Back to Home</button>
             </div>
         </div>
     </div>
@@ -104,11 +104,18 @@ $conn->close();
     </footer>
 </body>
 
+<script>
+    function backtohome(){
+        const url = '../PHP_Webpage/home.php';
+        window.location.href = url;
+    }
+</script>
+
 <?php
 //$to = 'f31ee@localhost';
 $to = $email;
 $subject = 'Dunot Order Number';
-$message = 'Dear' . $name . ', Your order has been received! The shipping is expected to arrive within 10 to 14 days. Thank you!';
+$message = 'Dear ' . $name . ', Your order has been received! The shipping is expected to arrive within 10 to 14 days. Thank you!';
 $headers = 'From: f32ee@localhost' . "\r\n" .
     'Reply-To: f32ee@localhost' . "\r\n" .
     'X-Mailer: PHP/' . phpversion();
