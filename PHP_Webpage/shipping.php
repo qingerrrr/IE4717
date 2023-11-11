@@ -241,13 +241,8 @@ if (isset($bookArray['bookName'])) {
     });
     document.addEventListener('keyup', function (event) {
       const submitBtn = document.getElementById('submitButton');
-<<<<<<< HEAD
 
       if (checkEmail && checkCountry && checkName && checkPhone && checkPC) {
-=======
-      const total = <?php echo $sumBooks; ?>;
-      if (checkEmail && checkCountry && checkName && checkPhone && checkPC && total !== 0) {
->>>>>>> 8b3fd01ea99b1e2f77ab168f1c23cdd300fe4911
         submitBtn.removeAttribute('disabled');
         console.log('Button enabled');
       } else {

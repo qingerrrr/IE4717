@@ -45,9 +45,8 @@ if (isset($_SESSION["name"]) || isset($_SESSION["adminName"])) {
                         <input type="checkbox" onclick="showPW('Password')" class="showPwCheckBox">
                         <label class="showPwLabel">Show Password</label>
                     </div>
-                    <p class="errormsg" id="errorPw">Min length of 8 characters. Contains at least a uppercase
-                        letter, a
-                        lowercase letter, a special character and a number</p>
+                    <p class="errormsg" id="errorPw">Min length of 8 characters. 
+                        Contains at least a uppercase letter, a lowercase letter, a special character (@ $ ! % * ? &) and a number</p>
 
 
                     <label for="confirmPassword">Confirm Password</label>
@@ -171,7 +170,7 @@ if (isset($_SESSION["name"]) || isset($_SESSION["adminName"])) {
 
             } else if (!pos) {
                 errorConfirmPW.style.visibility = "visible";
-                errorConfirmPW.textContent = "Min length of 8 characters. Contains at least a uppercase letter, a lowercase letter, a special character and a number";
+                errorConfirmPW.textContent = "Min length of 8 characters. Contains at least a uppercase letter, a lowercase letter, a special character (@ $ ! % * ? &) and a number";
                 confirmPwNode.classList.add("error-border");
 
                 //confirmPwNode.focus();
